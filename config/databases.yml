@@ -24,9 +24,9 @@ all:
     class:        sfPropelDatabase
     param:
       classname:  PropelPDO
-      dsn:        mysql:dbname=rayden;host=localhost
-      username:   root
-      password:   
+      dsn:        mysql:dbname=rayden_db;host=localhost
+      username:   raydenroot
+      password:   ifts12
       encoding:   utf8
       persistent: true
       pooling:    true
