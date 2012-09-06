@@ -1,0 +1,213 @@
+propel:
+  _attributes:
+    package: lib.model
+    defaultIdMethod: native
+
+  alumno:
+    _attributes:  { phpName: Alumno }
+    legajo:       { type: INTEGER, primaryKey: true, autoIncrement: false, required: true }
+    persona_id:   { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
+    beca:         { type: BOOLEAN, required:false, default: false }
+    regular:      { type: BOOLEAN, required:false, default: true }
+    regular_at:   { type: TIMESTAMP , required: false }
+    created_at:   ~
+    user_created: { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    updated_at:   ~
+    user_updated: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_at:   { type: TIMESTAMP , required: false }
+    user_deleted: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+
+  carrera:
+    _attributes:  { phpName: Carrera }
+    id:           { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    nombre:       { type: VARCHAR, size: '100', required: true }
+    descripcion:  { type: LONGVARCHAR, required: true }
+    created_at:   ~
+    user_created: { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    updated_at:   ~
+    user_updated: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_at:   { type: TIMESTAMP , required: false }
+    user_deleted: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+
+  dato_academico:
+    _attributes:            { phpName: DatoAcademico }
+    id:                     { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    persona_id:             { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
+    tipo_titulo_id:         { type: INTEGER, required: true, foreignTable: tipo_titulo, foreignReference: id }
+    titulo_obtenido:        { type: VARCHAR, size: '200', required: true }
+    establecimiento:        { type: VARCHAR, size: '200', required: true }
+    anio_titulo:            { type: INTEGER, required: true, size: 4 }
+    jurisdiccion:           { type: VARCHAR, size: '100', required: false }
+    titulo_nacionalidad_id: { type: INTEGER, required: true, foreignTable: nacionalidad, foreignReference: id }
+    estatal:                { type: BOOLEAN, required: true, default: true }
+    visado:                 { type: BOOLEAN, required: false, default: false }
+    fecha_visado:           { type: DATE, required: true }
+    observaciones:          { type: VARCHAR, size: 255, required: false }
+    created_at:             ~
+    user_created:           { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    updated_at:             ~
+    user_updated:           { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_at:             { type: TIMESTAMP , required: false }
+    user_deleted:           { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+  
+  docente:
+    _attributes:     { phpName: Docente }
+    legajo:          { type: INTEGER, primaryKey: true, autoIncrement: false, required: true }
+#    tipo_docente_id: { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
+    persona_id:      { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
+    created_at:      ~
+    user_created:    { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    updated_at:      ~
+    user_updated:    { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_at:      { type: TIMESTAMP , required: false }
+    user_deleted:    { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+  
+# docente_materia_revista:
+#   id:             { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+#   docente_legajo: { type: INTEGER, required: true, foreignTable: docente, foreignReference: legajo }
+#   materia_id:     { type: INTEGER, required: true, foreignTable: materia, foreignReference: id }
+#   revista_id:     { type: INTEGER, required: true, foreignTable: revista, foreignReference: id }
+#   created_at:     ~
+#   user_created:   { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+#   updated_at:     ~
+#   user_updated:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+#   deleted_at:     { type: TIMESTAMP , required: false }
+#   user_deleted:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+
+  domicilio:
+    _attributes:    { phpName: Domicilio }
+    id:             { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    persona_id:     { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
+    provincia_id:   { type: INTEGER, required: true, foreignTable: provincia, foreignReference: id }
+    localidad_id:   { type: INTEGER, required: true, foreignTable: localidad, foreignReference: id }
+    telefono:       { type: VARCHAR, size: '20', required: false }
+    calle:          { type: VARCHAR, size: '70', required: false }
+    altura:         { type: VARCHAR, size: '10', required: false }
+    piso:           { type: VARCHAR, size: '10', required: false }
+    dpto:           { type: VARCHAR, size: '5', required: false }
+    codigo_postal:  { type: VARCHAR, size: '8', required: false }
+    escalera:       { type: VARCHAR, size: '4', required: false }
+    torre:          { type: VARCHAR, size: '100', required: false }
+    nudo:           { type: VARCHAR, size: '100', required: false }
+    ala:            { type: VARCHAR, size: '10', required: false }
+    parcela:        { type: VARCHAR, size: '5', required: false }
+    entre_calles:   { type: VARCHAR, size: '255', required: false }
+    created_at:     ~
+    user_created:   { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    updated_at:     ~
+    user_updated:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_at:     { type: TIMESTAMP , required: false }
+    user_deleted:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+
+  estado_civil:
+    _attributes:  { phpName: EstadoCivil }
+    id:           { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    descripcion:  { type: VARCHAR, size: '10', required: true }
+    created_at:   ~
+    user_created: { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    updated_at:   ~
+    user_updated: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_at:   { type: TIMESTAMP , required: false }
+    user_deleted: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+
+  empleo:
+    _attributes:    { phpName: Empleo }
+    id:             { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    persona_id:     { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
+    tipo_empleo_id: { type: INTEGER, required: true, foreignTable: tipo_empleo, foreignReference: id }
+    cuit:           { type: INTEGER, size: '11' }
+    fecha_inicio:   { type: DATE, required: true }
+    fecha_fin:      { type: DATE, required: true }
+    cargo:          { type: VARCHAR, size: '50', required: false }
+    lugar_trabajo:  { type: VARCHAR, size: '100', required: false }
+    telefono:       { type: VARCHAR, size: '20', required: false }
+    created_at:     ~
+    user_created:   { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    updated_at:     ~
+    user_updated:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_at:     { type: TIMESTAMP , required: false }
+    user_deleted:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+
+  localidad:
+    _attributes:  { phpName: Localidad }
+    id:           { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    nombre:       { type: VARCHAR, size: '250', required: true }
+    cp:           { type: VARCHAR, size: '8', required: false }
+    provincia_id: { type: INTEGER, required: true, foreignTable: provincia, foreignReference: id }
+
+  materia:
+    _attributes: { phpName: Materia }
+    id:          { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    carrera_id:  { type: INTEGER, required: false, foreignTable: carrera, foreignReference: id }
+    nombre:      { type: VARCHAR, size: '50', required: false }
+    descripcion: { type: VARCHAR, size: '250', required: false }
+
+  nacionalidad:
+    _attributes: { phpName: Nacionalidad }
+    id:          { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    nombre:      { type: VARCHAR, size: '100', required: false }
+ 
+  persona:
+    _attributes:       { phpName: Persona }
+    id:                { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    nombre:            { type: VARCHAR, size: '50', required: false }
+    apellido:          { type: VARCHAR, size: '50', required: false }
+    tipo_documento_id: { type: INTEGER, required: true, foreignTable: tipo_documento, foreignReference: id }
+    nro_documento:     { type: VARCHAR, size: '14', required: true }
+    sexo_id:           { type: INTEGER, required: false, foreignTable: tipo_sexo, foreignReference: id }
+    celular:           { type: VARCHAR, size: '20', required: false }
+    email:             { type: VARCHAR, size: '50', required: true }
+    nacionalidad_id:   { type: INTEGER, required: true, foreignTable: nacionalidad, foreignReference: id }
+    estado_civil_id:   { type: INTEGER, required: true, foreignTable: estado_civil, foreignReference: id }
+    fecha_nacimiento:  { type: DATE, required: true }
+    lugar_nacimiento:  { type: VARCHAR, size: '50', required: false }
+    observaciones:     { type: LONGVARCHAR, required: false}
+    created_at:        ~
+    user_created:      { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    updated_at:        ~
+    user_updated:      { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_at:        { type: TIMESTAMP , required: false }
+    user_deleted:      { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+  
+  provincia:
+    _attributes: { phpName: Provincia }
+    id:          { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    nombre:      { type: VARCHAR, size: '50', required: true }
+
+# revista:
+#   _attributes: { phpName: Provincia }
+#   id:          { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+#   descripcion:      { type: VARCHAR, size: '150', required: true }
+#   sede:      { type: VARCHAR, size: '60', required: true }
+#   tipo_contratacion:      { type: VARCHAR, size: '60', required: true }
+#   carga_horaria:      { type: VARCHAR, size: '45', required: true }
+
+# tipo_docente:
+#   id:           { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+#   descripcion:  { type: VARCHAR, size: '45', required: true }
+
+  tipo_documento:
+    _attributes: { phpName: TipoDocumento }
+    id:          { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    nombre:      { type: VARCHAR, size: '5', required: true }
+    descripcion: { type: VARCHAR, size: '35', required: true }
+
+  tipo_empleo:
+    _attributes: { phpName: TipoEmpleo }
+    id:          { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    descripcion: { type: VARCHAR, size: '100', required: true }
+
+  tipo_sexo:
+    _attributes: { phpName: TipoSexo }
+    id:          { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    nombre:      { type: VARCHAR, size: '1', required: true }
+    descripcion: { type: VARCHAR, size: '10', required: true }
+  
+  tipo_titulo:
+    _attributes: { phpName: TipoTitulo }
+    id:          { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    descripcion: { type: VARCHAR, size: '100', required: true }
+
+  usuario:
+    _attributes: { phpName: Usuario }
+    id: { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }

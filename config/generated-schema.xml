@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="propel" package="lib.model" defaultIdMethod="native">
+
+  <table name="alumno">
+    <column name="legajo" type="INTEGER" primaryKey="true" autoIncrement="false" required="true" />
+    <column name="persona_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="persona">
+      <reference local="persona_id" foreign="id" />
+    </foreign-key>
+    <column name="beca" type="BOOLEAN" required="false" default="" />
+    <column name="regular" type="BOOLEAN" required="false" default="1" />
+    <column name="regular_at" type="TIMESTAMP" required="false" />
+    <column name="created_at" type="timestamp" />
+    <column name="user_created" type="INTEGER" required="true" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_created" foreign="id" />
+    </foreign-key>
+    <column name="updated_at" type="timestamp" />
+    <column name="user_updated" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_updated" foreign="id" />
+    </foreign-key>
+    <column name="deleted_at" type="TIMESTAMP" required="false" />
+    <column name="user_deleted" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_deleted" foreign="id" />
+    </foreign-key>
+  </table>
+
+  <table name="carrera">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="nombre" type="VARCHAR" size="100" required="true" />
+    <column name="descripcion" type="LONGVARCHAR" required="true" />
+    <column name="created_at" type="timestamp" />
+    <column name="user_created" type="INTEGER" required="true" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_created" foreign="id" />
+    </foreign-key>
+    <column name="updated_at" type="timestamp" />
+    <column name="user_updated" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_updated" foreign="id" />
+    </foreign-key>
+    <column name="deleted_at" type="TIMESTAMP" required="false" />
+    <column name="user_deleted" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_deleted" foreign="id" />
+    </foreign-key>
+  </table>
+
+  <table name="dato_academico">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="persona_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="persona">
+      <reference local="persona_id" foreign="id" />
+    </foreign-key>
+    <column name="tipo_titulo_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="tipo_titulo">
+      <reference local="tipo_titulo_id" foreign="id" />
+    </foreign-key>
+    <column name="titulo_obtenido" type="VARCHAR" size="200" required="true" />
+    <column name="establecimiento" type="VARCHAR" size="200" required="true" />
+    <column name="anio_titulo" type="INTEGER" required="true" size="4" />
+    <column name="jurisdiccion" type="VARCHAR" size="100" required="false" />
+    <column name="titulo_nacionalidad_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="nacionalidad">
+      <reference local="titulo_nacionalidad_id" foreign="id" />
+    </foreign-key>
+    <column name="estatal" type="BOOLEAN" required="true" default="1" />
+    <column name="visado" type="BOOLEAN" required="false" default="" />
+    <column name="fecha_visado" type="DATE" required="true" />
+    <column name="observaciones" type="VARCHAR" size="255" required="false" />
+    <column name="created_at" type="timestamp" />
+    <column name="user_created" type="INTEGER" required="true" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_created" foreign="id" />
+    </foreign-key>
+    <column name="updated_at" type="timestamp" />
+    <column name="user_updated" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_updated" foreign="id" />
+    </foreign-key>
+    <column name="deleted_at" type="TIMESTAMP" required="false" />
+    <column name="user_deleted" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_deleted" foreign="id" />
+    </foreign-key>
+  </table>
+
+  <table name="docente">
+    <column name="legajo" type="INTEGER" primaryKey="true" autoIncrement="false" required="true" />
+    <column name="persona_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="persona">
+      <reference local="persona_id" foreign="id" />
+    </foreign-key>
+    <column name="created_at" type="timestamp" />
+    <column name="user_created" type="INTEGER" required="true" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_created" foreign="id" />
+    </foreign-key>
+    <column name="updated_at" type="timestamp" />
+    <column name="user_updated" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_updated" foreign="id" />
+    </foreign-key>
+    <column name="deleted_at" type="TIMESTAMP" required="false" />
+    <column name="user_deleted" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_deleted" foreign="id" />
+    </foreign-key>
+  </table>
+
+  <table name="domicilio">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="persona_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="persona">
+      <reference local="persona_id" foreign="id" />
+    </foreign-key>
+    <column name="provincia_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="provincia">
+      <reference local="provincia_id" foreign="id" />
+    </foreign-key>
+    <column name="localidad_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="localidad">
+      <reference local="localidad_id" foreign="id" />
+    </foreign-key>
+    <column name="telefono" type="VARCHAR" size="20" required="false" />
+    <column name="calle" type="VARCHAR" size="70" required="false" />
+    <column name="altura" type="VARCHAR" size="10" required="false" />
+    <column name="piso" type="VARCHAR" size="10" required="false" />
+    <column name="dpto" type="VARCHAR" size="5" required="false" />
+    <column name="codigo_postal" type="VARCHAR" size="8" required="false" />
+    <column name="escalera" type="VARCHAR" size="4" required="false" />
+    <column name="torre" type="VARCHAR" size="100" required="false" />
+    <column name="nudo" type="VARCHAR" size="100" required="false" />
+    <column name="ala" type="VARCHAR" size="10" required="false" />
+    <column name="parcela" type="VARCHAR" size="5" required="false" />
+    <column name="entre_calles" type="VARCHAR" size="255" required="false" />
+    <column name="created_at" type="timestamp" />
+    <column name="user_created" type="INTEGER" required="true" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_created" foreign="id" />
+    </foreign-key>
+    <column name="updated_at" type="timestamp" />
+    <column name="user_updated" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_updated" foreign="id" />
+    </foreign-key>
+    <column name="deleted_at" type="TIMESTAMP" required="false" />
+    <column name="user_deleted" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_deleted" foreign="id" />
+    </foreign-key>
+  </table>
+
+  <table name="estado_civil">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="descripcion" type="VARCHAR" size="10" required="true" />
+    <column name="created_at" type="timestamp" />
+    <column name="user_created" type="INTEGER" required="true" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_created" foreign="id" />
+    </foreign-key>
+    <column name="updated_at" type="timestamp" />
+    <column name="user_updated" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_updated" foreign="id" />
+    </foreign-key>
+    <column name="deleted_at" type="TIMESTAMP" required="false" />
+    <column name="user_deleted" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_deleted" foreign="id" />
+    </foreign-key>
+  </table>
+
+  <table name="empleo">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="persona_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="persona">
+      <reference local="persona_id" foreign="id" />
+    </foreign-key>
+    <column name="tipo_empleo_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="tipo_empleo">
+      <reference local="tipo_empleo_id" foreign="id" />
+    </foreign-key>
+    <column name="cuit" type="INTEGER" size="11" />
+    <column name="fecha_inicio" type="DATE" required="true" />
+    <column name="fecha_fin" type="DATE" required="true" />
+    <column name="cargo" type="VARCHAR" size="50" required="false" />
+    <column name="lugar_trabajo" type="VARCHAR" size="100" required="false" />
+    <column name="telefono" type="VARCHAR" size="20" required="false" />
+    <column name="created_at" type="timestamp" />
+    <column name="user_created" type="INTEGER" required="true" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_created" foreign="id" />
+    </foreign-key>
+    <column name="updated_at" type="timestamp" />
+    <column name="user_updated" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_updated" foreign="id" />
+    </foreign-key>
+    <column name="deleted_at" type="TIMESTAMP" required="false" />
+    <column name="user_deleted" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_deleted" foreign="id" />
+    </foreign-key>
+  </table>
+
+  <table name="localidad">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="nombre" type="VARCHAR" size="250" required="true" />
+    <column name="cp" type="VARCHAR" size="8" required="false" />
+    <column name="provincia_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="provincia">
+      <reference local="provincia_id" foreign="id" />
+    </foreign-key>
+  </table>
+
+  <table name="materia">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="carrera_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="carrera">
+      <reference local="carrera_id" foreign="id" />
+    </foreign-key>
+    <column name="nombre" type="VARCHAR" size="50" required="false" />
+    <column name="descripcion" type="VARCHAR" size="250" required="false" />
+  </table>
+
+  <table name="nacionalidad">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="nombre" type="VARCHAR" size="100" required="false" />
+  </table>
+
+  <table name="persona">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="nombre" type="VARCHAR" size="50" required="false" />
+    <column name="apellido" type="VARCHAR" size="50" required="false" />
+    <column name="tipo_documento_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="tipo_documento">
+      <reference local="tipo_documento_id" foreign="id" />
+    </foreign-key>
+    <column name="nro_documento" type="VARCHAR" size="14" required="true" />
+    <column name="sexo_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="tipo_sexo">
+      <reference local="sexo_id" foreign="id" />
+    </foreign-key>
+    <column name="celular" type="VARCHAR" size="20" required="false" />
+    <column name="email" type="VARCHAR" size="50" required="true" />
+    <column name="nacionalidad_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="nacionalidad">
+      <reference local="nacionalidad_id" foreign="id" />
+    </foreign-key>
+    <column name="estado_civil_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="estado_civil">
+      <reference local="estado_civil_id" foreign="id" />
+    </foreign-key>
+    <column name="fecha_nacimiento" type="DATE" required="true" />
+    <column name="lugar_nacimiento" type="VARCHAR" size="50" required="false" />
+    <column name="observaciones" type="LONGVARCHAR" required="false" />
+    <column name="created_at" type="timestamp" />
+    <column name="user_created" type="INTEGER" required="true" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_created" foreign="id" />
+    </foreign-key>
+    <column name="updated_at" type="timestamp" />
+    <column name="user_updated" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_updated" foreign="id" />
+    </foreign-key>
+    <column name="deleted_at" type="TIMESTAMP" required="false" />
+    <column name="user_deleted" type="INTEGER" required="false" />
+    <foreign-key foreignTable="usuario">
+      <reference local="user_deleted" foreign="id" />
+    </foreign-key>
+  </table>
+
+  <table name="provincia">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="nombre" type="VARCHAR" size="50" required="true" />
+  </table>
+
+  <table name="tipo_documento">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="nombre" type="VARCHAR" size="5" required="true" />
+    <column name="descripcion" type="VARCHAR" size="35" required="true" />
+  </table>
+
+  <table name="tipo_empleo">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="descripcion" type="VARCHAR" size="100" required="true" />
+  </table>
+
+  <table name="tipo_sexo">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="nombre" type="VARCHAR" size="1" required="true" />
+    <column name="descripcion" type="VARCHAR" size="10" required="true" />
+  </table>
+
+  <table name="tipo_titulo">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="descripcion" type="VARCHAR" size="100" required="true" />
+  </table>
+
+  <table name="usuario">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+  </table>
+
+</database>
