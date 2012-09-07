@@ -18,4 +18,8 @@
  */
 class Persona extends BasePersona {
 
+	public function __toString()
+	{
+	
+	}
 } // Persona

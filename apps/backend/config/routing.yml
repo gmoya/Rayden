@@ -1,3 +1,21 @@
+docente:
+  class: sfPropelRouteCollection
+  options:
+    model:                Docente
+    module:               docente
+    prefix_path:          /docente
+    column:               legajo
+    with_wildcard_routes: true
+
+alumno:
+  class: sfPropelRouteCollection
+  options:
+    model:                Alumno
+    module:               alumno
+    prefix_path:          /alumno
+    column:               legajo
+    with_wildcard_routes: true
+
 carrera:
   class: sfPropelRouteCollection
   options:
