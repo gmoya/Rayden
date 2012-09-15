@@ -16,6 +16,24 @@
  *
  * @package    lib.model
  */
-class CarreraPeer extends BaseCarreraPeer {
+class CarreraPeer extends BaseCarreraPeer 
+{
+  static public function retrieveForAutoSelect($q, $limit)
+  {
+    $criteria = new Criteria();
 
+    $criteria->add(CarreraPeer::NOMBRE, '%'.$q.'%', Criteria::LIKE);
+    $criteria->addAscendingOrderByColumn(CarreraPeer::NOMBRE);
+    $criteria->setIgnoreCase(true);
+    $criteria->setLimit(10);
+
+    $carreras = array();
+
+    foreach (CarreraPeer::doSelect($criteria) as $carrera)
+    {
+      $carreras[$carrera->getId()] = (string) $carrera;
+    }
+
+		return $carreras;
+	}
 } // CarreraPeer

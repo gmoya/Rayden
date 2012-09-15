@@ -16,6 +16,20 @@
  *
  * @package    lib.model
  */
-class Carrera extends BaseCarrera {
+class Carrera extends BaseCarrera 
+{
+	public function __toString()
+	{
+		return $this->getNombre();
+	}
+
+  static public function search($arg = null)
+  {
+    if (null === $arg || '' === $arg) { return ''; }
+
+    $carrera = CarreraPeer::retrieveByPK($arg);
+    
+		return ($carrera && (($nombre = $carrera->getNombre()) != '')) ? $nombre : '';
+  }
 
 } // Carrera
