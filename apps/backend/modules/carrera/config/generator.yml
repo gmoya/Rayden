@@ -14,7 +14,8 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:
+        display: [ id, nombre, descripcion, _creada, user_created ] 
       filter:  ~
       form:    ~
       edit:    ~

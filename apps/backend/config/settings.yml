@@ -33,3 +33,5 @@ all:
 
     # Enable the database manager
     use_database:           true
+    default_culture:        es_AR        # Default user culture
+    i18n:                   on       # Enable interface translation. Set to off if your application should not be translated.

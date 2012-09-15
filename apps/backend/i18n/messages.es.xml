@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en_US" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>File is too large (maximum is %max_size% bytes).</source>
+        <target>Archivo demasiado grande (máx. %max_size% bytes).</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>The form submission cannot be processed. It probably means that you have uploaded a file that is too big.</source>
+        <target>El formulario no se pudo procesar. El archivo enviado es demasiado grande.</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Invalid mime type (%mime_type%).</source>
+        <target>Tipo de archivo inválido (%mime_type%).</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Carrera List</source>
+        <target>Carreras</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>New Carrera</source>
+        <target>Nueva Carrera</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Edit Carrera</source>
+        <target>Editar Carrera</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Created at</source>
+        <target>Creada</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>User created</source>
+        <target>Creada por</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+
