@@ -1,4 +1,4 @@
-USE rayden_db;
+
 # This is a fix for InnoDB in MySQL >= 4.1.x
 # It "suspends judgement" for fkey relationships until are tables are set.
 SET FOREIGN_KEY_CHECKS = 0;
@@ -234,25 +234,7 @@ CREATE TABLE `estado_civil`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`descripcion` VARCHAR(10)  NOT NULL,
-	`created_at` DATETIME,
-	`user_created` INTEGER  NOT NULL,
-	`updated_at` DATETIME,
-	`user_updated` INTEGER,
-	`deleted_at` DATETIME,
-	`user_deleted` INTEGER,
-	PRIMARY KEY (`id`),
-	INDEX `estado_civil_FI_1` (`user_created`),
-	CONSTRAINT `estado_civil_FK_1`
-		FOREIGN KEY (`user_created`)
-		REFERENCES `usuario` (`id`),
-	INDEX `estado_civil_FI_2` (`user_updated`),
-	CONSTRAINT `estado_civil_FK_2`
-		FOREIGN KEY (`user_updated`)
-		REFERENCES `usuario` (`id`),
-	INDEX `estado_civil_FI_3` (`user_deleted`),
-	CONSTRAINT `estado_civil_FK_3`
-		FOREIGN KEY (`user_deleted`)
-		REFERENCES `usuario` (`id`)
+	PRIMARY KEY (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -369,9 +351,9 @@ CREATE TABLE `persona`
 	`nombre` VARCHAR(50),
 	`apellido` VARCHAR(50),
 	`tipo_documento_id` INTEGER  NOT NULL,
-	`nro_documento` VARCHAR(14)  NOT NULL,
+	`nro_documento` INTEGER(14)  NOT NULL,
 	`sexo_id` INTEGER,
-	`celular` VARCHAR(20),
+	`celular` INTEGER(20),
 	`email` VARCHAR(50)  NOT NULL,
 	`nacionalidad_id` INTEGER  NOT NULL,
 	`estado_civil_id` INTEGER  NOT NULL,

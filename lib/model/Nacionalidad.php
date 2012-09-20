@@ -18,4 +18,8 @@
  */
 class Nacionalidad extends BaseNacionalidad {
 
+	public function __toString()
+	{
+		return $this->getNombre();
+	}
 } // Nacionalidad

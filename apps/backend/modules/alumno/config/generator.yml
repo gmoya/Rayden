@@ -14,7 +14,8 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:    
+        display: [ legajo, _nombre, _documento ]
       filter:  ~
       form:    ~
       edit:    ~

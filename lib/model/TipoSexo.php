@@ -18,4 +18,8 @@
  */
 class TipoSexo extends BaseTipoSexo {
 
+	public function __toString()
+	{
+		return $this->getNombre();
+	}
 } // TipoSexo

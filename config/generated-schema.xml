@@ -156,21 +156,6 @@
   <table name="estado_civil">
     <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
     <column name="descripcion" type="VARCHAR" size="10" required="true" />
-    <column name="created_at" type="timestamp" />
-    <column name="user_created" type="INTEGER" required="true" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_created" foreign="id" />
-    </foreign-key>
-    <column name="updated_at" type="timestamp" />
-    <column name="user_updated" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_updated" foreign="id" />
-    </foreign-key>
-    <column name="deleted_at" type="TIMESTAMP" required="false" />
-    <column name="user_deleted" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_deleted" foreign="id" />
-    </foreign-key>
   </table>
 
   <table name="empleo">
@@ -239,12 +224,12 @@
     <foreign-key foreignTable="tipo_documento">
       <reference local="tipo_documento_id" foreign="id" />
     </foreign-key>
-    <column name="nro_documento" type="VARCHAR" size="14" required="true" />
+    <column name="nro_documento" type="INTEGER" size="14" required="true" />
     <column name="sexo_id" type="INTEGER" required="false" />
     <foreign-key foreignTable="tipo_sexo">
       <reference local="sexo_id" foreign="id" />
     </foreign-key>
-    <column name="celular" type="VARCHAR" size="20" required="false" />
+    <column name="celular" type="INTEGER" size="20" required="false" />
     <column name="email" type="VARCHAR" size="50" required="true" />
     <column name="nacionalidad_id" type="INTEGER" required="true" />
     <foreign-key foreignTable="nacionalidad">

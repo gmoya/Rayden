@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en_US" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>Alumno List</source>
+        <target>Alumnos</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>New Alumno</source>
+        <target>Nuevo Alumno</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Edit Alumnos</source>
+        <target>Editar Alumno</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+

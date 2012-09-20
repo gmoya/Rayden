@@ -18,4 +18,8 @@
  */
 class EstadoCivil extends BaseEstadoCivil {
 
+	public function __toString()
+	{
+		return $this->getDescripcion();
+	}
 } // EstadoCivil

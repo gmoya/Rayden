@@ -28,5 +28,4 @@ class Alumno extends BaseAlumno {
 		// is where any default values for this object are set.
 		parent::__construct();
 	}
-
 } // Alumno

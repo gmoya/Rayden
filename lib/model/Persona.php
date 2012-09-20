@@ -22,4 +22,20 @@ class Persona extends BasePersona {
 	{
 	
 	}
+
+	public function getNombreCompleto()
+	{
+		$nombre =	$this->getApellido().' ';
+		$nombre.= $this->getNombre();
+
+		return $nombre;
+	}
+
+	public function getDocumentoCompleto()
+	{
+		$doc = $this->getTipoDocumento()->__toString().' ';
+		$doc.= $this->getNroDocumento();
+
+		return $doc;
+	}
 } // Persona

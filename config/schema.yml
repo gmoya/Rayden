@@ -103,12 +103,6 @@ propel:
     _attributes:  { phpName: EstadoCivil }
     id:           { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
     descripcion:  { type: VARCHAR, size: '10', required: true }
-    created_at:   ~
-    user_created: { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
-    updated_at:   ~
-    user_updated: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
-    deleted_at:   { type: TIMESTAMP , required: false }
-    user_deleted: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
 
   empleo:
     _attributes:    { phpName: Empleo }
@@ -153,9 +147,9 @@ propel:
     nombre:            { type: VARCHAR, size: '50', required: false }
     apellido:          { type: VARCHAR, size: '50', required: false }
     tipo_documento_id: { type: INTEGER, required: true, foreignTable: tipo_documento, foreignReference: id }
-    nro_documento:     { type: VARCHAR, size: '14', required: true }
+    nro_documento:     { type: INTEGER, size: '14', required: true }
     sexo_id:           { type: INTEGER, required: false, foreignTable: tipo_sexo, foreignReference: id }
-    celular:           { type: VARCHAR, size: '20', required: false }
+    celular:           { type: INTEGER, size: '20', required: false }
     email:             { type: VARCHAR, size: '50', required: true }
     nacionalidad_id:   { type: INTEGER, required: true, foreignTable: nacionalidad, foreignReference: id }
     estado_civil_id:   { type: INTEGER, required: true, foreignTable: estado_civil, foreignReference: id }
