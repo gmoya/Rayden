@@ -1,7 +1,7 @@
 <?php use_helper('I18N', 'Date') ?>
 <?php include_partial('alumno/assets') ?>
 
-<div id="new-alumno-123">
+<div id="new-alumno">
   <h1><?php echo __('New Alumno') ?><hr></h1>
 
   <?php include_partial('alumno/flashes') ?>

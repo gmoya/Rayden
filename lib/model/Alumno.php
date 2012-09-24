@@ -28,4 +28,13 @@ class Alumno extends BaseAlumno {
 		// is where any default values for this object are set.
 		parent::__construct();
 	}
+
+	# TODO por el momento no hace nada	
+	public function delete(PropelPDO $con = null)
+	{
+		if ($con === null) {
+			$con = Propel::getConnection(AlumnoPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+		}
+	}
+
 } // Alumno

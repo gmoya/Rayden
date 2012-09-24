@@ -16,4 +16,6 @@ class AlumnoFormFilter extends BaseAlumnoFormFilter
 					$this['user_deleted'], $this['regular_at']
 				);
   }
+
+#	$this['legajo'] = 
 }

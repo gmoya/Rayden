@@ -18,4 +18,12 @@
  */
 class Docente extends BaseDocente {
 
+	# TODO por el momento no hace nada	
+	public function delete(PropelPDO $con = null)
+	{
+		if ($con === null) {
+			$con = Propel::getConnection(DocentePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+		}
+	}
+
 } // Docente

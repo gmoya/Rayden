@@ -32,4 +32,12 @@ class Carrera extends BaseCarrera
 		return ($carrera && (($nombre = $carrera->getNombre()) != '')) ? $nombre : '';
   }
 
+	# TODO por el momento no hace nada	
+	public function delete(PropelPDO $con = null)
+	{
+		if ($con === null) {
+			$con = Propel::getConnection(CarreraPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+		}
+	}
+
 } // Carrera

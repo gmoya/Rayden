@@ -7,6 +7,12 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
+		<script> 
+			jQuery(document).ready(function() { 
+				jQuery('.colorbox').colorbox({ title: ' ' }); 
+			});	
+		</script>
+
   </head>
   <body>
     <?php echo $sf_content ?>

@@ -10,5 +10,6 @@ class ProjectConfiguration extends sfProjectConfiguration
     $this->enableAllPluginsExcept(array('sfDoctrinePlugin'));
 #    $this->enablePlugins('sfPropelPlugin');
     $this->enablePlugins('sfFormExtraPlugin');
+    $this->enablePlugins('sfJqueryReloadedPlugin');
   }
 }
