@@ -56,13 +56,14 @@ propel:
     _attributes:     { phpName: Docente }
     legajo:          { type: INTEGER, primaryKey: true, autoIncrement: false, required: true }
 #    tipo_docente_id: { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
+    estado:          { type: INTEGER, size: 1, required:true, default: 0 }
     persona_id:      { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
     created_at:      ~
-    created_by_id:    { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
+    created_by_id:   { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:      ~
-    updated_by_id:    { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
+    updated_by_id:   { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
     deleted_at:      { type: TIMESTAMP , required: false }
-    deleted_by_id:    { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
+    deleted_by_id:   { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
   
 # docente_materia_revista:
 #   id:             { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }

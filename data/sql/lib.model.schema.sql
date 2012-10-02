@@ -141,6 +141,7 @@ DROP TABLE IF EXISTS `docente`;
 CREATE TABLE `docente`
 (
 	`legajo` INTEGER  NOT NULL,
+	`estado` INTEGER(1) default 0 NOT NULL,
 	`persona_id` INTEGER  NOT NULL,
 	`created_at` DATETIME,
 	`created_by_id` INTEGER  NOT NULL,
