@@ -1,3 +1,59 @@
+html, body {
+    margin-top: -7px !important;
+		padding: 0 !important;
+	color: #626161;
+}
+
+#header {
+	background-color: #FFF;
+	border-bottom: 10px solid rgba(0, 0, 0, 0.15);
+	font: 15px/1em "Proxima Nova Regular",helvetica,arial,sans-serif;
+	height: 80px;
+}
+
+.menu-container {
+	margin: 0 auto;
+	padding-left: 170px;
+	position: relative;
+	width: 820px;
+}
+
+
+#menu ul li {
+	display: inline;
+		list-style: none;
+    cursor: pointer;
+    float: left;
+    height: 80px;
+    line-height: 80px;
+    min-width: 55px;
+    padding: 0 15px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#menu ul li > a {
+	color: #666666;
+	text-decoration: none;
+	display: block;
+}
+
+#menu ul li:hover {
+	background-color: #E1F7F7;
+}
+
+#menu ul li:hover > a {
+	color: #0095B2;
+}
+
+#container {
+   margin: 0 auto;
+    padding-top: 38px;
+    position: relative;
+    width: 990px;
+}
+
 .sf_admin_action_new {
 	display: inline-block;
 }
@@ -50,6 +106,47 @@
 	clear: both;
 }
 
+#sf_admin_container .form table, 
+#sf_admin_container .form tr, 
+#sf_admin_container .form th, 
+#sf_admin_container .form td {
+	border: 0;
+	color: #999999;
+	font-size: 12px;
+}
+
+.form h1 {
+	color: #333333;
+	font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 8px;
+  width: 299px;
+}
+
+input[type='text'], textarea {
+    border-color: #D9D9D9;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    color: #999999;
+    font-size: 15px;
+    height: 25px;
+    padding-left: 10px;
+}
+
+textarea {
+	height: 60px;	
+}
+
+select {
+	background-color: #F5F5F5;
+	border: 1px solid #D9D9D9;
+  border-radius: 5px;
+  padding: 3px;
+	color: #626161;
+}
+
 input[type='submit'] {
 	background-color: #09A6B8;
 	border: 0 none;
@@ -58,6 +155,14 @@ input[type='submit'] {
 	cursor: pointer;
 	font-weight: bold;
 	padding: 7px 15px;
+}
+
+#alumno_persona_observaciones {
+	width: 98% !important;
+}
+
+#alumno_persona_nro_documento {
+	width: 127px !important;
 }
 
 .sf_admin_actions {
@@ -70,5 +175,96 @@ input[type='submit'] {
 	background-repeat: no-repeat;
 	padding-bottom: 100px;
 	padding-left: 90px;
+}
+
+.sf_admin_list table {
+	width: 692px;
+}
+
+.sf_admin_list table,
+.sf_admin_filter table {
+	font-size: 11px;
+}
+
+#sf_admin_container .sf_admin_filter table input[type="text"] {
+	width: 150px;
+	font-size: 11px;
+}
+
+.sf_admin_filter input[type='submit'] {
+	padding: 5px;
+}
+
+#sf_admin_container td, #sf_admin_container th {
+	vertical-align: middle;
+}
+
+/*** PERFIL ***/
+#info-perfil {
+	float: left;
+}
+
+#foto-perfil {
+	float: left;
+	margin-right: 15px;
+}
+
+#foto-perfil img {
+	background-color: #fff;
+	border: 1px solid #CCCCCC;
+	padding: 1px;
+}
+
+#datos-perfil {
+	display: inline;
+	float: left;
+}
+
+#datos-perfil ul {
+	margin: 0;
+}
+
+#datos-perfil li {
+	list-style: none;
+	color: #676766;
+	line-height: 22px;
+}
+
+.nombre-perfil {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.perfil-lateral {
+	float: right;
+}
+
+.pin {
+	border: 1px solid #CBCBCB;
+	margin-bottom: 15px;
+}
+
+.pin-header {
+    background-color: #666666;
+    color: #FFFFFF;
+    font-size: 12px;
+    height: 30px;
+    padding: 3px 21px 0 19px;
+    width: 430px;
+}
+
+.pin-header h2 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.pin-content {
+	background-color: #fff;
+	padding: 10px 21px 5px;
+}
+
+.clear {
+	clear: both;
 }
 

@@ -1,8 +1,8 @@
 <table>
 	<tr>
 		<td>  <?php echo $form['legajo']->renderLabel() ?></td>
-		<td  class="campos">
-		  <div class="<?php echo $class['legajo'] ?><?php $form['legajo']->hasError() and print ' errors' ?>">
+		<td  class="campos" colspan="2">
+		  <div class="">
 		    <div>
 		          <?php echo $form['legajo']->render() ?>
 		          <?php echo $form['legajo']->renderError() ?>
@@ -12,11 +12,23 @@
 		    </div>
 		  </div>
 		</td>
+		<td>  <?php echo $form['beca']->renderLabel() ?></td>
+		<td  class="campos">
+		  <div class="">
+		    <div>
+		          <?php echo $form['beca']->render() ?>
+		          <?php echo $form['beca']->renderError() ?>
+		          <?php if ($help = $form['beca']->renderHelp()) : ?>
+		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
+		          <?php endif ?>
+		    </div>
+		  </div>
+		</td>
 	</tr>
 
 	<tr>
 		<td>  <?php echo $form['persona']['nombre']->renderLabel() ?></td>
-		<td  class="campos">
+		<td  class="campos" colspan="2">
 		  <div class="<?php echo $class['persona']['nombre'] ?><?php $form['persona']['nombre']->hasError() and print ' errors' ?>">
 		    <div>
 		          <?php echo $form['persona']['nombre']->render() ?>
@@ -27,8 +39,6 @@
 		    </div>
 		  </div>
 		</td>
-	</tr>
-	<tr>
 		<td>  <?php echo $form['persona']['apellido']->renderLabel() ?></td>
 		<td  class="campos">
 		  <div class="<?php echo $class['persona']['apellido'] ?><?php $form['persona']['apellido']->hasError() and print ' errors' ?>">
@@ -43,7 +53,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td>  <?php echo $form['persona']['tipo_documento_id']->renderLabel() ?></td>
+		<td>  <?php echo $form['persona']['nro_documento']->renderLabel('Documento') ?></td>
 		<td  class="campos">
 		  <div class="<?php echo $class['persona']['tipo_documento_id'] ?><?php $form['persona']['tipo_documento_id']->hasError() and print ' errors' ?>">
 		    <div>
@@ -55,9 +65,6 @@
 		    </div>
 		  </div>
 		</td>
-	</tr>
-	<tr>
-		<td>  <?php echo $form['persona']['nro_documento']->renderLabel() ?></td>
 		<td  class="campos">
 		  <div class="<?php echo $class['persona']['nro_documento'] ?><?php $form['persona']['nro_documento']->hasError() and print ' errors' ?>">
 		    <div>
@@ -69,51 +76,7 @@
 		    </div>
 		  </div>
 		</td>
-	</tr>
-	<tr>
-		<td>  <?php echo $form['persona']['sexo_id']->renderLabel() ?></td>
-		<td  class="campos">
-		  <div class="<?php echo $class['persona']['sexo_id'] ?><?php $form['persona']['sexo_id']->hasError() and print ' errors' ?>">
-		    <div>
-		          <?php echo $form['persona']['sexo_id']->render() ?>
-		          <?php echo $form['persona']['sexo_id']->renderError() ?>
-		          <?php if ($help = $form['persona']['sexo_id']->renderHelp()) : ?>
-		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
-		          <?php endif ?>
-		    </div>
-		  </div>
-		</td>
-	</tr>
-	<tr>
-		<td>  <?php echo $form['persona']['celular']->renderLabel() ?></td>
-		<td  class="campos">
-		  <div class="<?php echo $class['persona']['celular'] ?><?php $form['persona']['celular']->hasError() and print ' errors' ?>">
-		    <div>
-		          <?php echo $form['persona']['celular']->render() ?>
-		          <?php echo $form['persona']['celular']->renderError() ?>
-		          <?php if ($help = $form['persona']['celular']->renderHelp()) : ?>
-		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
-		          <?php endif ?>
-		    </div>
-		  </div>
-		</td>
-	</tr>
-	<tr>
-		<td>  <?php echo $form['persona']['email']->renderLabel() ?></td>
-		<td  class="campos">
-		  <div class="<?php echo $class['persona']['email'] ?><?php $form['persona']['email']->hasError() and print ' errors' ?>">
-		    <div>
-		          <?php echo $form['persona']['email']->render() ?>
-		          <?php echo $form['persona']['email']->renderError() ?>
-		          <?php if ($help = $form['persona']['email']->renderHelp()) : ?>
-		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
-		          <?php endif ?>
-		    </div>
-		  </div>
-		</td>
-	</tr>
-	<tr>
-		<td>  <?php echo $form['persona']['nacionalidad_id']->renderLabel() ?></td>
+		<td>  <?php echo $form['persona']['nacionalidad_id']->renderLabel('País de origen') ?></td>
 		<td  class="campos">
 		  <div class="<?php echo $class['persona']['nacionalidad_id'] ?><?php $form['persona']['nacionalidad_id']->hasError() and print ' errors' ?>">
 		    <div>
@@ -126,7 +89,20 @@
 		  </div>
 		</td>
 	</tr>
+
 	<tr>
+		<td>  <?php echo $form['persona']['sexo_id']->renderLabel() ?></td>
+		<td  class="campos" colspan="2">
+		  <div class="<?php echo $class['persona']['sexo_id'] ?><?php $form['persona']['sexo_id']->hasError() and print ' errors' ?>">
+		    <div>
+		          <?php echo $form['persona']['sexo_id']->render() ?>
+		          <?php echo $form['persona']['sexo_id']->renderError() ?>
+		          <?php if ($help = $form['persona']['sexo_id']->renderHelp()) : ?>
+		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
+		          <?php endif ?>
+		    </div>
+		  </div>
+		</td>
 		<td>  <?php echo $form['persona']['estado_civil_id']->renderLabel() ?></td>
 		<td  class="campos">
 		  <div class="<?php echo $class['persona']['estado_civil_id'] ?><?php $form['persona']['estado_civil_id']->hasError() and print ' errors' ?>">
@@ -140,9 +116,10 @@
 		  </div>
 		</td>
 	</tr>
+
 	<tr>
 		<td>  <?php echo $form['persona']['fecha_nacimiento']->renderLabel() ?></td>
-		<td  class="campos">
+		<td  class="campos" colspan="2">
 		  <div class="<?php echo $class['persona']['fecha_nacimiento'] ?><?php $form['persona']['fecha_nacimiento']->hasError() and print ' errors' ?>">
 		    <div>
 		          <?php echo $form['persona']['fecha_nacimiento']->render() ?>
@@ -153,8 +130,6 @@
 		    </div>
 		  </div>
 		</td>
-	</tr>
-	<tr>
 		<td>  <?php echo $form['persona']['lugar_nacimiento']->renderLabel() ?></td>
 		<td  class="campos">
 		  <div class="<?php echo $class['persona']['lugar_nacimiento'] ?><?php $form['persona']['lugar_nacimiento']->hasError() and print ' errors' ?>">
@@ -169,27 +144,40 @@
 		</td>
 	</tr>
 	<tr>
-		<td>  <?php echo $form['persona']['observaciones']->renderLabel() ?></td>
-		<td  class="campos">
-		  <div class="<?php echo $class['persona']['observaciones'] ?><?php $form['persona']['observaciones']->hasError() and print ' errors' ?>">
+		<td>  <?php echo $form['persona']['celular']->renderLabel() ?></td>
+		<td  class="campos" colspan="2">
+		  <div class="<?php echo $class['persona']['celular'] ?><?php $form['persona']['celular']->hasError() and print ' errors' ?>">
 		    <div>
-		          <?php echo $form['persona']['observaciones']->render() ?>
-		          <?php echo $form['persona']['observaciones']->renderError() ?>
-		          <?php if ($help = $form['persona']['observaciones']->renderHelp()) : ?>
+		          <?php echo $form['persona']['celular']->render() ?>
+		          <?php echo $form['persona']['celular']->renderError() ?>
+		          <?php if ($help = $form['persona']['celular']->renderHelp()) : ?>
+		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
+		          <?php endif ?>
+		    </div>
+		  </div>
+		</td>
+		<td>  <?php echo $form['persona']['email']->renderLabel() ?></td>
+		<td  class="campos">
+		  <div class="<?php echo $class['persona']['email'] ?><?php $form['persona']['email']->hasError() and print ' errors' ?>">
+		    <div>
+		          <?php echo $form['persona']['email']->render() ?>
+		          <?php echo $form['persona']['email']->renderError() ?>
+		          <?php if ($help = $form['persona']['email']->renderHelp()) : ?>
 		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
 		          <?php endif ?>
 		    </div>
 		  </div>
 		</td>
 	</tr>
+
 	<tr>
-		<td>  <?php echo $form['beca']->renderLabel() ?></td>
-		<td  class="campos">
-		  <div class="<?php echo $class['beca'] ?><?php $form['beca']->hasError() and print ' errors' ?>">
+		<td>  <?php echo $form['persona']['observaciones']->renderLabel() ?></td>
+		<td  class="campos" colspan="5">
+		  <div class="<?php echo $class['persona']['observaciones'] ?><?php $form['persona']['observaciones']->hasError() and print ' errors' ?>">
 		    <div>
-		          <?php echo $form['beca']->render() ?>
-		          <?php echo $form['beca']->renderError() ?>
-		          <?php if ($help = $form['beca']->renderHelp()) : ?>
+		          <?php echo $form['persona']['observaciones']->render() ?>
+		          <?php echo $form['persona']['observaciones']->renderError() ?>
+		          <?php if ($help = $form['persona']['observaciones']->renderHelp()) : ?>
 		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
 		          <?php endif ?>
 		    </div>

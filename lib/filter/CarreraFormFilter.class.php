@@ -11,9 +11,9 @@ class CarreraFormFilter extends BaseCarreraFormFilter
 {
   public function configure()
   {
-		unset($this['descripcion'], $this['created_at'], $this['user_created'], 
-					$this['updated_at'], $this['user_updated'], $this['deleted_at'], 
-					$this['user_deleted'], $this['nombre']
+		unset($this['descripcion'], $this['created_at'], $this['created_by_id'], 
+					$this['updated_at'], $this['updated_by_id'], $this['deleted_at'], 
+					$this['deleted_by_id'], $this['nombre']
 				);
 
     $contexto = sfContext::getInstance();

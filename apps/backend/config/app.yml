@@ -3,3 +3,20 @@
 
 # default values
 #all:
+all:
+#  sf_guard_plugin:
+#    profile_class: Ficha
+#    profile_field_name: usuario_id
+  estados:
+    Alumno:
+      preinscripto: 0
+      inscripto: 1
+      regular: 2
+      abandono: 3
+      cambio_de_instituto: 4
+      rechazado: 5
+      egresado: 6
+    docente:
+      suplente: 0
+      interino: 1
+      titular: 2

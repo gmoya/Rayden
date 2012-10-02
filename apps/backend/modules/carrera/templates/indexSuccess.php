@@ -1,18 +1,6 @@
 <?php use_helper('I18N', 'Date') ?>
 <?php include_partial('carrera/assets') ?>
 
-<script type="text/javascript">
-	jQuery(document).ready(function() {
-		jQuery('.sf_admin_list .sf_admin_row').mouseover(function(){
-    	jQuery(this).find('.icon').css('visibility', 'visible');
-		});
-
-		jQuery('.sf_admin_list .sf_admin_row').mouseout(function(){
-    	jQuery(this).find('.icon').css('visibility', 'hidden');
-		});
-	});
-</script>
-
 <div id="sf_admin_container">
   <h1 class="title-list">
 		<?php echo __('Carrera List', array(), 'messages') ?>

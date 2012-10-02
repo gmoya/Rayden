@@ -26,6 +26,13 @@ all:
   .settings:
     # Form security secret (CSRF protection)
     csrf_secret:            95d5ccc74ee5f3cf243e9c848f43d43927ae2f9b
+    enabled_modules:   [ default, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth ]
+
+    login_module:           sfGuardAuth   # To be called when a non-authenticated user
+    login_action:           signin     # Tries to access a secure page
+
+    secure_module:          sfGuardAuth   # To be called when a user doesn't have
+    secure_action:          secure    # The credentials required for an action
 
     # Output escaping settings
     escaping_strategy:      true

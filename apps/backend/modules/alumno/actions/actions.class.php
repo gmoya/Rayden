@@ -13,6 +13,11 @@ require_once dirname(__FILE__).'/../lib/alumnoGeneratorHelper.class.php';
  */
 class alumnoActions extends autoAlumnoActions
 {
+  public function executeShow(sfWebRequest $request) 
+  {      
+		$this->Alumno = AlumnoPeer::retrieveByPk($request->getParameter('id'));
+  }
+
   public function executeNew(sfWebRequest $request)
 	{
       $form = $this->configuration->getForm();
@@ -26,8 +31,11 @@ class alumnoActions extends autoAlumnoActions
     $this->form = $this->configuration->getForm();
     $this->Alumno = $this->form->getObject();
 
-    $this->processForm($request, $this->form);
-    $this->ajax = $this->isAjax();
+    if (($this->ajax = $this->isAjax()) && $this->processForm($request, $this->form))
+    {
+    	return $this->renderPartial('alumno/notice', array('alumno' => $this->Alumno, 'isNew' => true));
+    }
+
     $this->setTemplate('new');
   }
 
@@ -43,11 +51,40 @@ class alumnoActions extends autoAlumnoActions
     $this->Alumno = $this->getRoute()->getObject();
     $this->form = $this->configuration->getForm($this->Alumno);
 
-    $this->processForm($request, $this->form);
-    $this->ajax = $this->isAjax();
+    if (($this->ajax = $this->isAjax()) && $this->processForm($request, $this->form))
+    {
+    	return $this->renderPartial('alumno/notice', array('alumno' => $this->Alumno, 'isNew' => false));
+    }
+
     $this->setTemplate('edit');
   }
- 
+
+ 	public function executeListAjax(sfWebRequest $request)
+	{
+    if ($request->getParameter('sort') && $this->isValidSortColumn($request->getParameter('sort')))
+    {
+      $this->setSort(array($request->getParameter('sort'), $request->getParameter('sort_type')));
+    }
+    if ($request->getParameter('page'))
+    {
+      $this->setPage($request->getParameter('page'));
+    }
+
+    $pager = $this->getPager();
+    $sort = $this->getSort();
+    $helper = new alumnoGeneratorHelper();
+
+    return $this->renderPartial('alumno/list_ajax', array('pager' => $pager, 'sort' => $sort, 'helper' => $helper));
+	}
+
+  public function executeAutoComplete(sfWebRequest $request)
+  {
+    $this->getResponse()->setContentType('application/json');
+    $alumnos = AlumnoPeer::retrieveForAutoSelect($request->getParameter('q'), $request->getParameter('limit'));
+    
+		return $this->renderText(json_encode($alumnos));
+  }
+	
 	public function isAjax()
   {
     return $this->getRequest()->isXmlHttpRequest();
@@ -65,29 +102,22 @@ class alumnoActions extends autoAlumnoActions
 #			$form->getObject()->setUserCreated($request->getUser()->getId());
 			if ($form->isNew())
 			{
-				$form->getObject()->setUserCreated(1);
+				$form->getObject()->setCreatedById(1);
 			}
 			else
 			{
-				$form->getObject()->setUserUpdated(1);
+				$form->getObject()->setUpdatedById(1);
 			}
 
       $alumno = $form->save();
 
       $this->dispatcher->notify(new sfEvent($this, 'admin.save_object', array('object' => $alumno)));
 
-      if ($request->hasParameter('_save_and_add'))
-      {
-        $this->getUser()->setFlash('notice', $notice.'Puede agregar una compa&ntilde;&iacute;a m&aacute;s.');
+			if ($this->isAjax()) { return true; }
+      
+			$this->getUser()->setFlash('notice', $notice);
 
-        $this->redirect('@alumno_new');
-      }
-      else
-      {
-        $this->getUser()->setFlash('notice', $notice);
-
-        $this->redirect('@alumno');
-      }
+      $this->redirect('@alumno');
     }
     else
     {

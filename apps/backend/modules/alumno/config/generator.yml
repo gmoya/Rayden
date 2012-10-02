@@ -15,8 +15,9 @@ generator:
       actions: ~
       fields:  ~
       list:    
-        display: [ legajo, _nombre, _documento ]
-      filter:  ~
+        display: [ legajo, _nombre, _documento, _carrera, _estado ]
+      filter:
+        display: [ legajo, nombre, nro_documento, carrera, estado, beca, regular ]
       form:    ~
       edit:    ~
       new:     ~

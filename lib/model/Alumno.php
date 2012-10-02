@@ -29,6 +29,11 @@ class Alumno extends BaseAlumno {
 		parent::__construct();
 	}
 
+	public function __toString()
+	{
+		return $this->getPersona()->getNombreCompleto();
+	}
+
 	# TODO por el momento no hace nada	
 	public function delete(PropelPDO $con = null)
 	{
@@ -36,5 +41,39 @@ class Alumno extends BaseAlumno {
 			$con = Propel::getConnection(AlumnoPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 	}
+
+  public function getNombreEstado()
+  {
+    $estadosPosibles = sfConfig::get('app_estados_Alumno');
+    $nombreEstado = array_keys($estadosPosibles, $this->getEstado());
+
+    return(ucwords($nombreEstado[0]));
+  }
+
+  static public function getIdByNombreEstado($nombre = null, $desc = false)
+  {
+    $estadosPosibles = sfConfig::get('app_estados_Alumno');
+
+    if (!is_null($nombre))
+    {
+      return $estadosPosibles[$nombre];
+    }
+
+    if ($desc)
+    {
+      return $nombreEstado = array_keys($estadosPosibles);
+    }
+
+    return $estadosPosibles;
+  }
+
+  static public function search($arg = null)
+  {
+    if (null === $arg || '' === $arg) { return ''; }
+
+    $alumno = AlumnoPeer::retrieveByPK($arg);
+    
+		return ($alumno && (($nombre = $alumno->getPersona()->getNombreCompleto()) != '')) ? $nombre : '';
+  }
 
 } // Alumno

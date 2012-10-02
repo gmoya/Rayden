@@ -2,7 +2,8 @@
 <database name="propel" package="lib.model" defaultIdMethod="native">
 
   <table name="alumno">
-    <column name="legajo" type="INTEGER" primaryKey="true" autoIncrement="false" required="true" />
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="legajo" type="INTEGER" required="false" />
     <column name="persona_id" type="INTEGER" required="true" />
     <foreign-key foreignTable="persona">
       <reference local="persona_id" foreign="id" />
@@ -10,20 +11,21 @@
     <column name="beca" type="BOOLEAN" required="false" default="" />
     <column name="regular" type="BOOLEAN" required="false" default="1" />
     <column name="regular_at" type="TIMESTAMP" required="false" />
+    <column name="estado" type="INTEGER" size="1" required="true" default="0" />
     <column name="created_at" type="timestamp" />
-    <column name="user_created" type="INTEGER" required="true" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_created" foreign="id" />
+    <column name="created_by_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="created_by_id" foreign="id" />
     </foreign-key>
     <column name="updated_at" type="timestamp" />
-    <column name="user_updated" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_updated" foreign="id" />
+    <column name="updated_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="updated_by_id" foreign="id" />
     </foreign-key>
     <column name="deleted_at" type="TIMESTAMP" required="false" />
-    <column name="user_deleted" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_deleted" foreign="id" />
+    <column name="deleted_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="deleted_by_id" foreign="id" />
     </foreign-key>
   </table>
 
@@ -32,19 +34,19 @@
     <column name="nombre" type="VARCHAR" size="100" required="true" />
     <column name="descripcion" type="LONGVARCHAR" required="true" />
     <column name="created_at" type="timestamp" />
-    <column name="user_created" type="INTEGER" required="true" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_created" foreign="id" />
+    <column name="created_by_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="created_by_id" foreign="id" />
     </foreign-key>
     <column name="updated_at" type="timestamp" />
-    <column name="user_updated" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_updated" foreign="id" />
+    <column name="updated_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="updated_by_id" foreign="id" />
     </foreign-key>
     <column name="deleted_at" type="TIMESTAMP" required="false" />
-    <column name="user_deleted" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_deleted" foreign="id" />
+    <column name="deleted_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="deleted_by_id" foreign="id" />
     </foreign-key>
   </table>
 
@@ -71,19 +73,19 @@
     <column name="fecha_visado" type="DATE" required="true" />
     <column name="observaciones" type="VARCHAR" size="255" required="false" />
     <column name="created_at" type="timestamp" />
-    <column name="user_created" type="INTEGER" required="true" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_created" foreign="id" />
+    <column name="created_by_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="created_by_id" foreign="id" />
     </foreign-key>
     <column name="updated_at" type="timestamp" />
-    <column name="user_updated" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_updated" foreign="id" />
+    <column name="updated_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="updated_by_id" foreign="id" />
     </foreign-key>
     <column name="deleted_at" type="TIMESTAMP" required="false" />
-    <column name="user_deleted" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_deleted" foreign="id" />
+    <column name="deleted_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="deleted_by_id" foreign="id" />
     </foreign-key>
   </table>
 
@@ -94,19 +96,19 @@
       <reference local="persona_id" foreign="id" />
     </foreign-key>
     <column name="created_at" type="timestamp" />
-    <column name="user_created" type="INTEGER" required="true" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_created" foreign="id" />
+    <column name="created_by_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="created_by_id" foreign="id" />
     </foreign-key>
     <column name="updated_at" type="timestamp" />
-    <column name="user_updated" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_updated" foreign="id" />
+    <column name="updated_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="updated_by_id" foreign="id" />
     </foreign-key>
     <column name="deleted_at" type="TIMESTAMP" required="false" />
-    <column name="user_deleted" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_deleted" foreign="id" />
+    <column name="deleted_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="deleted_by_id" foreign="id" />
     </foreign-key>
   </table>
 
@@ -137,19 +139,19 @@
     <column name="parcela" type="VARCHAR" size="5" required="false" />
     <column name="entre_calles" type="VARCHAR" size="255" required="false" />
     <column name="created_at" type="timestamp" />
-    <column name="user_created" type="INTEGER" required="true" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_created" foreign="id" />
+    <column name="created_by_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="created_by_id" foreign="id" />
     </foreign-key>
     <column name="updated_at" type="timestamp" />
-    <column name="user_updated" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_updated" foreign="id" />
+    <column name="updated_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="updated_by_id" foreign="id" />
     </foreign-key>
     <column name="deleted_at" type="TIMESTAMP" required="false" />
-    <column name="user_deleted" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_deleted" foreign="id" />
+    <column name="deleted_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="deleted_by_id" foreign="id" />
     </foreign-key>
   </table>
 
@@ -175,19 +177,19 @@
     <column name="lugar_trabajo" type="VARCHAR" size="100" required="false" />
     <column name="telefono" type="VARCHAR" size="20" required="false" />
     <column name="created_at" type="timestamp" />
-    <column name="user_created" type="INTEGER" required="true" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_created" foreign="id" />
+    <column name="created_by_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="created_by_id" foreign="id" />
     </foreign-key>
     <column name="updated_at" type="timestamp" />
-    <column name="user_updated" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_updated" foreign="id" />
+    <column name="updated_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="updated_by_id" foreign="id" />
     </foreign-key>
     <column name="deleted_at" type="TIMESTAMP" required="false" />
-    <column name="user_deleted" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_deleted" foreign="id" />
+    <column name="deleted_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="deleted_by_id" foreign="id" />
     </foreign-key>
   </table>
 
@@ -220,42 +222,42 @@
     <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
     <column name="nombre" type="VARCHAR" size="50" required="false" />
     <column name="apellido" type="VARCHAR" size="50" required="false" />
-    <column name="tipo_documento_id" type="INTEGER" required="true" />
+    <column name="tipo_documento_id" type="INTEGER" required="false" />
     <foreign-key foreignTable="tipo_documento">
       <reference local="tipo_documento_id" foreign="id" />
     </foreign-key>
-    <column name="nro_documento" type="INTEGER" size="14" required="true" />
+    <column name="nro_documento" type="INTEGER" size="14" required="false" />
     <column name="sexo_id" type="INTEGER" required="false" />
     <foreign-key foreignTable="tipo_sexo">
       <reference local="sexo_id" foreign="id" />
     </foreign-key>
-    <column name="celular" type="INTEGER" size="20" required="false" />
-    <column name="email" type="VARCHAR" size="50" required="true" />
-    <column name="nacionalidad_id" type="INTEGER" required="true" />
+    <column name="celular" type="VARCHAR" size="20" required="false" />
+    <column name="email" type="VARCHAR" size="50" required="false" />
+    <column name="nacionalidad_id" type="INTEGER" required="false" />
     <foreign-key foreignTable="nacionalidad">
       <reference local="nacionalidad_id" foreign="id" />
     </foreign-key>
-    <column name="estado_civil_id" type="INTEGER" required="true" />
+    <column name="estado_civil_id" type="INTEGER" required="false" />
     <foreign-key foreignTable="estado_civil">
       <reference local="estado_civil_id" foreign="id" />
     </foreign-key>
-    <column name="fecha_nacimiento" type="DATE" required="true" />
+    <column name="fecha_nacimiento" type="DATE" required="false" />
     <column name="lugar_nacimiento" type="VARCHAR" size="50" required="false" />
     <column name="observaciones" type="LONGVARCHAR" required="false" />
     <column name="created_at" type="timestamp" />
-    <column name="user_created" type="INTEGER" required="true" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_created" foreign="id" />
+    <column name="created_by_id" type="INTEGER" required="true" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="created_by_id" foreign="id" />
     </foreign-key>
     <column name="updated_at" type="timestamp" />
-    <column name="user_updated" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_updated" foreign="id" />
+    <column name="updated_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="updated_by_id" foreign="id" />
     </foreign-key>
     <column name="deleted_at" type="TIMESTAMP" required="false" />
-    <column name="user_deleted" type="INTEGER" required="false" />
-    <foreign-key foreignTable="usuario">
-      <reference local="user_deleted" foreign="id" />
+    <column name="deleted_by_id" type="INTEGER" required="false" />
+    <foreign-key foreignTable="sf_guard_user">
+      <reference local="deleted_by_id" foreign="id" />
     </foreign-key>
   </table>
 

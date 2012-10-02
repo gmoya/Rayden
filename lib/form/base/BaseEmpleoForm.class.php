@@ -24,11 +24,11 @@ abstract class BaseEmpleoForm extends BaseFormPropel
       'lugar_trabajo'  => new sfWidgetFormInputText(),
       'telefono'       => new sfWidgetFormInputText(),
       'created_at'     => new sfWidgetFormDateTime(),
-      'user_created'   => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => false)),
+      'created_by_id'  => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => false)),
       'updated_at'     => new sfWidgetFormDateTime(),
-      'user_updated'   => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
+      'updated_by_id'  => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
       'deleted_at'     => new sfWidgetFormDateTime(),
-      'user_deleted'   => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
+      'deleted_by_id'  => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -42,11 +42,11 @@ abstract class BaseEmpleoForm extends BaseFormPropel
       'lugar_trabajo'  => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'telefono'       => new sfValidatorString(array('max_length' => 20, 'required' => false)),
       'created_at'     => new sfValidatorDateTime(array('required' => false)),
-      'user_created'   => new sfValidatorPropelChoice(array('model' => 'Usuario', 'column' => 'id')),
+      'created_by_id'  => new sfValidatorPropelChoice(array('model' => 'sfGuardUser', 'column' => 'id')),
       'updated_at'     => new sfValidatorDateTime(array('required' => false)),
-      'user_updated'   => new sfValidatorPropelChoice(array('model' => 'Usuario', 'column' => 'id', 'required' => false)),
+      'updated_by_id'  => new sfValidatorPropelChoice(array('model' => 'sfGuardUser', 'column' => 'id', 'required' => false)),
       'deleted_at'     => new sfValidatorDateTime(array('required' => false)),
-      'user_deleted'   => new sfValidatorPropelChoice(array('model' => 'Usuario', 'column' => 'id', 'required' => false)),
+      'deleted_by_id'  => new sfValidatorPropelChoice(array('model' => 'sfGuardUser', 'column' => 'id', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('empleo[%s]');

@@ -12,34 +12,36 @@ DROP TABLE IF EXISTS `alumno`;
 
 CREATE TABLE `alumno`
 (
-	`legajo` INTEGER  NOT NULL,
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`legajo` INTEGER,
 	`persona_id` INTEGER  NOT NULL,
 	`beca` TINYINT default 0,
 	`regular` TINYINT default 1,
 	`regular_at` DATETIME,
+	`estado` INTEGER(1) default 0 NOT NULL,
 	`created_at` DATETIME,
-	`user_created` INTEGER  NOT NULL,
+	`created_by_id` INTEGER  NOT NULL,
 	`updated_at` DATETIME,
-	`user_updated` INTEGER,
+	`updated_by_id` INTEGER,
 	`deleted_at` DATETIME,
-	`user_deleted` INTEGER,
-	PRIMARY KEY (`legajo`),
+	`deleted_by_id` INTEGER,
+	PRIMARY KEY (`id`),
 	INDEX `alumno_FI_1` (`persona_id`),
 	CONSTRAINT `alumno_FK_1`
 		FOREIGN KEY (`persona_id`)
 		REFERENCES `persona` (`id`),
-	INDEX `alumno_FI_2` (`user_created`),
+	INDEX `alumno_FI_2` (`created_by_id`),
 	CONSTRAINT `alumno_FK_2`
-		FOREIGN KEY (`user_created`)
-		REFERENCES `usuario` (`id`),
-	INDEX `alumno_FI_3` (`user_updated`),
+		FOREIGN KEY (`created_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `alumno_FI_3` (`updated_by_id`),
 	CONSTRAINT `alumno_FK_3`
-		FOREIGN KEY (`user_updated`)
-		REFERENCES `usuario` (`id`),
-	INDEX `alumno_FI_4` (`user_deleted`),
+		FOREIGN KEY (`updated_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `alumno_FI_4` (`deleted_by_id`),
 	CONSTRAINT `alumno_FK_4`
-		FOREIGN KEY (`user_deleted`)
-		REFERENCES `usuario` (`id`)
+		FOREIGN KEY (`deleted_by_id`)
+		REFERENCES `sf_guard_user` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -55,24 +57,24 @@ CREATE TABLE `carrera`
 	`nombre` VARCHAR(100)  NOT NULL,
 	`descripcion` TEXT  NOT NULL,
 	`created_at` DATETIME,
-	`user_created` INTEGER  NOT NULL,
+	`created_by_id` INTEGER  NOT NULL,
 	`updated_at` DATETIME,
-	`user_updated` INTEGER,
+	`updated_by_id` INTEGER,
 	`deleted_at` DATETIME,
-	`user_deleted` INTEGER,
+	`deleted_by_id` INTEGER,
 	PRIMARY KEY (`id`),
-	INDEX `carrera_FI_1` (`user_created`),
+	INDEX `carrera_FI_1` (`created_by_id`),
 	CONSTRAINT `carrera_FK_1`
-		FOREIGN KEY (`user_created`)
-		REFERENCES `usuario` (`id`),
-	INDEX `carrera_FI_2` (`user_updated`),
+		FOREIGN KEY (`created_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `carrera_FI_2` (`updated_by_id`),
 	CONSTRAINT `carrera_FK_2`
-		FOREIGN KEY (`user_updated`)
-		REFERENCES `usuario` (`id`),
-	INDEX `carrera_FI_3` (`user_deleted`),
+		FOREIGN KEY (`updated_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `carrera_FI_3` (`deleted_by_id`),
 	CONSTRAINT `carrera_FK_3`
-		FOREIGN KEY (`user_deleted`)
-		REFERENCES `usuario` (`id`)
+		FOREIGN KEY (`deleted_by_id`)
+		REFERENCES `sf_guard_user` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -97,11 +99,11 @@ CREATE TABLE `dato_academico`
 	`fecha_visado` DATE  NOT NULL,
 	`observaciones` VARCHAR(255),
 	`created_at` DATETIME,
-	`user_created` INTEGER  NOT NULL,
+	`created_by_id` INTEGER  NOT NULL,
 	`updated_at` DATETIME,
-	`user_updated` INTEGER,
+	`updated_by_id` INTEGER,
 	`deleted_at` DATETIME,
-	`user_deleted` INTEGER,
+	`deleted_by_id` INTEGER,
 	PRIMARY KEY (`id`),
 	INDEX `dato_academico_FI_1` (`persona_id`),
 	CONSTRAINT `dato_academico_FK_1`
@@ -115,18 +117,18 @@ CREATE TABLE `dato_academico`
 	CONSTRAINT `dato_academico_FK_3`
 		FOREIGN KEY (`titulo_nacionalidad_id`)
 		REFERENCES `nacionalidad` (`id`),
-	INDEX `dato_academico_FI_4` (`user_created`),
+	INDEX `dato_academico_FI_4` (`created_by_id`),
 	CONSTRAINT `dato_academico_FK_4`
-		FOREIGN KEY (`user_created`)
-		REFERENCES `usuario` (`id`),
-	INDEX `dato_academico_FI_5` (`user_updated`),
+		FOREIGN KEY (`created_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `dato_academico_FI_5` (`updated_by_id`),
 	CONSTRAINT `dato_academico_FK_5`
-		FOREIGN KEY (`user_updated`)
-		REFERENCES `usuario` (`id`),
-	INDEX `dato_academico_FI_6` (`user_deleted`),
+		FOREIGN KEY (`updated_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `dato_academico_FI_6` (`deleted_by_id`),
 	CONSTRAINT `dato_academico_FK_6`
-		FOREIGN KEY (`user_deleted`)
-		REFERENCES `usuario` (`id`)
+		FOREIGN KEY (`deleted_by_id`)
+		REFERENCES `sf_guard_user` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -141,28 +143,28 @@ CREATE TABLE `docente`
 	`legajo` INTEGER  NOT NULL,
 	`persona_id` INTEGER  NOT NULL,
 	`created_at` DATETIME,
-	`user_created` INTEGER  NOT NULL,
+	`created_by_id` INTEGER  NOT NULL,
 	`updated_at` DATETIME,
-	`user_updated` INTEGER,
+	`updated_by_id` INTEGER,
 	`deleted_at` DATETIME,
-	`user_deleted` INTEGER,
+	`deleted_by_id` INTEGER,
 	PRIMARY KEY (`legajo`),
 	INDEX `docente_FI_1` (`persona_id`),
 	CONSTRAINT `docente_FK_1`
 		FOREIGN KEY (`persona_id`)
 		REFERENCES `persona` (`id`),
-	INDEX `docente_FI_2` (`user_created`),
+	INDEX `docente_FI_2` (`created_by_id`),
 	CONSTRAINT `docente_FK_2`
-		FOREIGN KEY (`user_created`)
-		REFERENCES `usuario` (`id`),
-	INDEX `docente_FI_3` (`user_updated`),
+		FOREIGN KEY (`created_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `docente_FI_3` (`updated_by_id`),
 	CONSTRAINT `docente_FK_3`
-		FOREIGN KEY (`user_updated`)
-		REFERENCES `usuario` (`id`),
-	INDEX `docente_FI_4` (`user_deleted`),
+		FOREIGN KEY (`updated_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `docente_FI_4` (`deleted_by_id`),
 	CONSTRAINT `docente_FK_4`
-		FOREIGN KEY (`user_deleted`)
-		REFERENCES `usuario` (`id`)
+		FOREIGN KEY (`deleted_by_id`)
+		REFERENCES `sf_guard_user` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -191,11 +193,11 @@ CREATE TABLE `domicilio`
 	`parcela` VARCHAR(5),
 	`entre_calles` VARCHAR(255),
 	`created_at` DATETIME,
-	`user_created` INTEGER  NOT NULL,
+	`created_by_id` INTEGER  NOT NULL,
 	`updated_at` DATETIME,
-	`user_updated` INTEGER,
+	`updated_by_id` INTEGER,
 	`deleted_at` DATETIME,
-	`user_deleted` INTEGER,
+	`deleted_by_id` INTEGER,
 	PRIMARY KEY (`id`),
 	INDEX `domicilio_FI_1` (`persona_id`),
 	CONSTRAINT `domicilio_FK_1`
@@ -209,18 +211,18 @@ CREATE TABLE `domicilio`
 	CONSTRAINT `domicilio_FK_3`
 		FOREIGN KEY (`localidad_id`)
 		REFERENCES `localidad` (`id`),
-	INDEX `domicilio_FI_4` (`user_created`),
+	INDEX `domicilio_FI_4` (`created_by_id`),
 	CONSTRAINT `domicilio_FK_4`
-		FOREIGN KEY (`user_created`)
-		REFERENCES `usuario` (`id`),
-	INDEX `domicilio_FI_5` (`user_updated`),
+		FOREIGN KEY (`created_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `domicilio_FI_5` (`updated_by_id`),
 	CONSTRAINT `domicilio_FK_5`
-		FOREIGN KEY (`user_updated`)
-		REFERENCES `usuario` (`id`),
-	INDEX `domicilio_FI_6` (`user_deleted`),
+		FOREIGN KEY (`updated_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `domicilio_FI_6` (`deleted_by_id`),
 	CONSTRAINT `domicilio_FK_6`
-		FOREIGN KEY (`user_deleted`)
-		REFERENCES `usuario` (`id`)
+		FOREIGN KEY (`deleted_by_id`)
+		REFERENCES `sf_guard_user` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -256,11 +258,11 @@ CREATE TABLE `empleo`
 	`lugar_trabajo` VARCHAR(100),
 	`telefono` VARCHAR(20),
 	`created_at` DATETIME,
-	`user_created` INTEGER  NOT NULL,
+	`created_by_id` INTEGER  NOT NULL,
 	`updated_at` DATETIME,
-	`user_updated` INTEGER,
+	`updated_by_id` INTEGER,
 	`deleted_at` DATETIME,
-	`user_deleted` INTEGER,
+	`deleted_by_id` INTEGER,
 	PRIMARY KEY (`id`),
 	INDEX `empleo_FI_1` (`persona_id`),
 	CONSTRAINT `empleo_FK_1`
@@ -270,18 +272,18 @@ CREATE TABLE `empleo`
 	CONSTRAINT `empleo_FK_2`
 		FOREIGN KEY (`tipo_empleo_id`)
 		REFERENCES `tipo_empleo` (`id`),
-	INDEX `empleo_FI_3` (`user_created`),
+	INDEX `empleo_FI_3` (`created_by_id`),
 	CONSTRAINT `empleo_FK_3`
-		FOREIGN KEY (`user_created`)
-		REFERENCES `usuario` (`id`),
-	INDEX `empleo_FI_4` (`user_updated`),
+		FOREIGN KEY (`created_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `empleo_FI_4` (`updated_by_id`),
 	CONSTRAINT `empleo_FK_4`
-		FOREIGN KEY (`user_updated`)
-		REFERENCES `usuario` (`id`),
-	INDEX `empleo_FI_5` (`user_deleted`),
+		FOREIGN KEY (`updated_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `empleo_FI_5` (`deleted_by_id`),
 	CONSTRAINT `empleo_FK_5`
-		FOREIGN KEY (`user_deleted`)
-		REFERENCES `usuario` (`id`)
+		FOREIGN KEY (`deleted_by_id`)
+		REFERENCES `sf_guard_user` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -350,22 +352,22 @@ CREATE TABLE `persona`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`nombre` VARCHAR(50),
 	`apellido` VARCHAR(50),
-	`tipo_documento_id` INTEGER  NOT NULL,
-	`nro_documento` INTEGER(14)  NOT NULL,
+	`tipo_documento_id` INTEGER,
+	`nro_documento` INTEGER(14),
 	`sexo_id` INTEGER,
-	`celular` INTEGER(20),
-	`email` VARCHAR(50)  NOT NULL,
-	`nacionalidad_id` INTEGER  NOT NULL,
-	`estado_civil_id` INTEGER  NOT NULL,
-	`fecha_nacimiento` DATE  NOT NULL,
+	`celular` VARCHAR(20),
+	`email` VARCHAR(50),
+	`nacionalidad_id` INTEGER,
+	`estado_civil_id` INTEGER,
+	`fecha_nacimiento` DATE,
 	`lugar_nacimiento` VARCHAR(50),
 	`observaciones` TEXT,
 	`created_at` DATETIME,
-	`user_created` INTEGER  NOT NULL,
+	`created_by_id` INTEGER  NOT NULL,
 	`updated_at` DATETIME,
-	`user_updated` INTEGER,
+	`updated_by_id` INTEGER,
 	`deleted_at` DATETIME,
-	`user_deleted` INTEGER,
+	`deleted_by_id` INTEGER,
 	PRIMARY KEY (`id`),
 	INDEX `persona_FI_1` (`tipo_documento_id`),
 	CONSTRAINT `persona_FK_1`
@@ -383,18 +385,18 @@ CREATE TABLE `persona`
 	CONSTRAINT `persona_FK_4`
 		FOREIGN KEY (`estado_civil_id`)
 		REFERENCES `estado_civil` (`id`),
-	INDEX `persona_FI_5` (`user_created`),
+	INDEX `persona_FI_5` (`created_by_id`),
 	CONSTRAINT `persona_FK_5`
-		FOREIGN KEY (`user_created`)
-		REFERENCES `usuario` (`id`),
-	INDEX `persona_FI_6` (`user_updated`),
+		FOREIGN KEY (`created_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `persona_FI_6` (`updated_by_id`),
 	CONSTRAINT `persona_FK_6`
-		FOREIGN KEY (`user_updated`)
-		REFERENCES `usuario` (`id`),
-	INDEX `persona_FI_7` (`user_deleted`),
+		FOREIGN KEY (`updated_by_id`)
+		REFERENCES `sf_guard_user` (`id`),
+	INDEX `persona_FI_7` (`deleted_by_id`),
 	CONSTRAINT `persona_FK_7`
-		FOREIGN KEY (`user_deleted`)
-		REFERENCES `usuario` (`id`)
+		FOREIGN KEY (`deleted_by_id`)
+		REFERENCES `sf_guard_user` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------

@@ -38,4 +38,31 @@ class Persona extends BasePersona {
 
 		return $doc;
 	}
+
+  public function getEdad()
+	{
+    $dia = date('j');
+    $mes = date('n');
+    $ano = date('Y');
+    $dia_nac = $this->getFechaNacimiento('d');
+    $mes_nac = $this->getFechaNacimiento('m');
+    $ano_nac = $this->getFechaNacimiento('Y');
+
+    if ( (is_null($ano_nac)) || (is_null($mes_nac)) || (is_null($dia_nac))){
+      return null;
+    }
+    
+		if (($mes_nac == $mes) && ($dia_nac > $dia)) {
+      $ano = ($ano - 1);
+    }
+
+    if ($mes_nac > $mes) 
+		{
+      $ano = ($ano - 1);
+    }
+    
+		$edad = ($ano - $ano_nac);
+    
+		return $edad;
+  }
 } // Persona

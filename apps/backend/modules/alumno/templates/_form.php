@@ -9,7 +9,16 @@
   <?php if ($ajax) : ?>
     <?php use_helper('jQuery') ?>
     <?php $url = url_for_form($form, '@alumno') ?>
-    <?php echo jq_form_remote_tag(array('update' => 'new-alumno', 'url' => $url), array('method' => 'POST', 'id' => 'form-alumno')) ?>
+    <?php echo jq_form_remote_tag(array(
+																				'update' 	=> 'sf_admin_container.alumno-form',
+																				'url' 		=> $url,
+																				'loading'  	=> 'sendingForm("#sf_admin_container.alumno-form")',
+																				'complete'	=> 'jQuery.colorbox.resize();'
+																			), 
+																			array(
+																				'method' 	=> 'POST', 
+																				'id' 			=> 'form-alumno'
+																			)) ?>
     <?php if (!$form->isNew()) : ?>
       <input type="hidden" value="put" name="sf_method">
       <?php endif ?>

@@ -5,17 +5,19 @@ propel:
 
   alumno:
     _attributes:  { phpName: Alumno }
-    legajo:       { type: INTEGER, primaryKey: true, autoIncrement: false, required: true }
+    id:           { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    legajo:       { type: INTEGER, required: false }
     persona_id:   { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
     beca:         { type: BOOLEAN, required:false, default: false }
     regular:      { type: BOOLEAN, required:false, default: true }
     regular_at:   { type: TIMESTAMP , required: false }
+    estado:       { type: INTEGER, size: 1, required:true, default: 0 }
     created_at:   ~
-    user_created: { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    created_by_id: { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:   ~
-    user_updated: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    updated_by_id: { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
     deleted_at:   { type: TIMESTAMP , required: false }
-    user_deleted: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_by_id: { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
 
   carrera:
     _attributes:  { phpName: Carrera }
@@ -23,11 +25,11 @@ propel:
     nombre:       { type: VARCHAR, size: '100', required: true }
     descripcion:  { type: LONGVARCHAR, required: true }
     created_at:   ~
-    user_created: { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    created_by_id: { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:   ~
-    user_updated: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    updated_by_id: { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
     deleted_at:   { type: TIMESTAMP , required: false }
-    user_deleted: { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_by_id: { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
 
   dato_academico:
     _attributes:            { phpName: DatoAcademico }
@@ -44,11 +46,11 @@ propel:
     fecha_visado:           { type: DATE, required: true }
     observaciones:          { type: VARCHAR, size: 255, required: false }
     created_at:             ~
-    user_created:           { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    created_by_id:           { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:             ~
-    user_updated:           { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    updated_by_id:           { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
     deleted_at:             { type: TIMESTAMP , required: false }
-    user_deleted:           { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_by_id:           { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
   
   docente:
     _attributes:     { phpName: Docente }
@@ -56,11 +58,11 @@ propel:
 #    tipo_docente_id: { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
     persona_id:      { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
     created_at:      ~
-    user_created:    { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    created_by_id:    { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:      ~
-    user_updated:    { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    updated_by_id:    { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
     deleted_at:      { type: TIMESTAMP , required: false }
-    user_deleted:    { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_by_id:    { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
   
 # docente_materia_revista:
 #   id:             { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
@@ -68,11 +70,11 @@ propel:
 #   materia_id:     { type: INTEGER, required: true, foreignTable: materia, foreignReference: id }
 #   revista_id:     { type: INTEGER, required: true, foreignTable: revista, foreignReference: id }
 #   created_at:     ~
-#   user_created:   { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+#   created_by_id:   { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
 #   updated_at:     ~
-#   user_updated:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+#   updated_by_id:   { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
 #   deleted_at:     { type: TIMESTAMP , required: false }
-#   user_deleted:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+#   deleted_by_id:   { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
 
   domicilio:
     _attributes:    { phpName: Domicilio }
@@ -93,11 +95,11 @@ propel:
     parcela:        { type: VARCHAR, size: '5', required: false }
     entre_calles:   { type: VARCHAR, size: '255', required: false }
     created_at:     ~
-    user_created:   { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    created_by_id:   { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:     ~
-    user_updated:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    updated_by_id:   { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
     deleted_at:     { type: TIMESTAMP , required: false }
-    user_deleted:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_by_id:   { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
 
   estado_civil:
     _attributes:  { phpName: EstadoCivil }
@@ -116,11 +118,11 @@ propel:
     lugar_trabajo:  { type: VARCHAR, size: '100', required: false }
     telefono:       { type: VARCHAR, size: '20', required: false }
     created_at:     ~
-    user_created:   { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    created_by_id:   { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:     ~
-    user_updated:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    updated_by_id:   { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
     deleted_at:     { type: TIMESTAMP , required: false }
-    user_deleted:   { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_by_id:   { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
 
   localidad:
     _attributes:  { phpName: Localidad }
@@ -146,22 +148,22 @@ propel:
     id:                { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
     nombre:            { type: VARCHAR, size: '50', required: false }
     apellido:          { type: VARCHAR, size: '50', required: false }
-    tipo_documento_id: { type: INTEGER, required: true, foreignTable: tipo_documento, foreignReference: id }
-    nro_documento:     { type: INTEGER, size: '14', required: true }
+    tipo_documento_id: { type: INTEGER, required: false, foreignTable: tipo_documento, foreignReference: id }
+    nro_documento:     { type: INTEGER, size: '14', required: false }
     sexo_id:           { type: INTEGER, required: false, foreignTable: tipo_sexo, foreignReference: id }
-    celular:           { type: INTEGER, size: '20', required: false }
-    email:             { type: VARCHAR, size: '50', required: true }
-    nacionalidad_id:   { type: INTEGER, required: true, foreignTable: nacionalidad, foreignReference: id }
-    estado_civil_id:   { type: INTEGER, required: true, foreignTable: estado_civil, foreignReference: id }
-    fecha_nacimiento:  { type: DATE, required: true }
+    celular:           { type: VARCHAR, size: '20', required: false }
+    email:             { type: VARCHAR, size: '50', required: false }
+    nacionalidad_id:   { type: INTEGER, required: false, foreignTable: nacionalidad, foreignReference: id }
+    estado_civil_id:   { type: INTEGER, required: false, foreignTable: estado_civil, foreignReference: id }
+    fecha_nacimiento:  { type: DATE, required: false }
     lugar_nacimiento:  { type: VARCHAR, size: '50', required: false }
     observaciones:     { type: LONGVARCHAR, required: false}
     created_at:        ~
-    user_created:      { type: INTEGER, required: true, foreignTable: usuario, foreignReference: id }
+    created_by_id:     { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:        ~
-    user_updated:      { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    updated_by_id:     { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
     deleted_at:        { type: TIMESTAMP , required: false }
-    user_deleted:      { type: INTEGER, required: false, foreignTable: usuario, foreignReference: id }
+    deleted_by_id:     { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id }
   
   provincia:
     _attributes: { phpName: Provincia }

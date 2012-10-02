@@ -1,8 +1,8 @@
 <?php use_helper('I18N', 'Date') ?>
 <?php include_partial('alumno/assets') ?>
 
-<div id="new-alumno">
-  <h1><?php echo __('New Alumno') ?><hr></h1>
+<div id="sf_admin_container" class="alumno-form form">
+  <h1><?php echo __('New Alumno') ?></h1>
 
   <?php include_partial('alumno/flashes') ?>
 

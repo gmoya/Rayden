@@ -24,11 +24,11 @@ abstract class BaseDatoAcademicoFormFilter extends BaseFormFilterPropel
       'fecha_visado'           => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'observaciones'          => new sfWidgetFormFilterInput(),
       'created_at'             => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
-      'user_created'           => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
+      'created_by_id'          => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
       'updated_at'             => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
-      'user_updated'           => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
+      'updated_by_id'          => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
       'deleted_at'             => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
-      'user_deleted'           => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
+      'deleted_by_id'          => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -44,11 +44,11 @@ abstract class BaseDatoAcademicoFormFilter extends BaseFormFilterPropel
       'fecha_visado'           => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'observaciones'          => new sfValidatorPass(array('required' => false)),
       'created_at'             => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
-      'user_created'           => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Usuario', 'column' => 'id')),
+      'created_by_id'          => new sfValidatorPropelChoice(array('required' => false, 'model' => 'sfGuardUser', 'column' => 'id')),
       'updated_at'             => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
-      'user_updated'           => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Usuario', 'column' => 'id')),
+      'updated_by_id'          => new sfValidatorPropelChoice(array('required' => false, 'model' => 'sfGuardUser', 'column' => 'id')),
       'deleted_at'             => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
-      'user_deleted'           => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Usuario', 'column' => 'id')),
+      'deleted_by_id'          => new sfValidatorPropelChoice(array('required' => false, 'model' => 'sfGuardUser', 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('dato_academico_filters[%s]');
@@ -79,11 +79,11 @@ abstract class BaseDatoAcademicoFormFilter extends BaseFormFilterPropel
       'fecha_visado'           => 'Date',
       'observaciones'          => 'Text',
       'created_at'             => 'Date',
-      'user_created'           => 'ForeignKey',
+      'created_by_id'          => 'ForeignKey',
       'updated_at'             => 'Date',
-      'user_updated'           => 'ForeignKey',
+      'updated_by_id'          => 'ForeignKey',
       'deleted_at'             => 'Date',
-      'user_deleted'           => 'ForeignKey',
+      'deleted_by_id'          => 'ForeignKey',
     );
   }
 }

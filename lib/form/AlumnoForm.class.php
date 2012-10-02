@@ -11,18 +11,18 @@ class AlumnoForm extends BaseAlumnoForm
 {
   public function configure()
   {
-		unset($this['created_at'], $this['user_created'], $this['updated_at'], 
-					$this['user_updated'], $this['deleted_at'],	$this['user_deleted'],
-					$this['regular'], $this['regular_at'], $this['persona_id']
+		unset($this['created_at'], $this['created_by_id'], $this['updated_at'], 
+					$this['updated_by_id'], $this['deleted_at'],	$this['deleted_by_id'],
+					$this['regular'], $this['regular_at'], $this['persona_id'], $this['estado']
 				);
 
     $persona_form = new PersonaForm($this->object->getPersona());
+		$persona_form->configurarAlumno();
 
     $this->embedForm('persona', $persona_form);
 	
 		$this->widgetSchema['legajo'] = new sfWidgetFormInputText();
 		$this->validatorSchema['legajo'] = new sfValidatorInteger();
-
   }
 
 	public function doSave($con = null)
@@ -39,9 +39,9 @@ class AlumnoForm extends BaseAlumnoForm
 
 		if ($this->isNew())
 		{
-    	$persona_form[0]->getObject()->setUserCreated($this->getObject()->getUserCreated());
+    	$persona_form[0]->getObject()->setCreatedById($this->getObject()->getCreatedById());
 		} else {
-    	$persona_form[0]->getObject()->setUserUpdated($this->getObject()->getUserUpdated());
+    	$persona_form[0]->getObject()->setUpdatedById($this->getObject()->getUpdatedById());
 		}
 		
     $this->saveEmbeddedForms($con, $persona_form);
@@ -56,4 +56,5 @@ class AlumnoForm extends BaseAlumnoForm
 
     return $this->object;
 	}
+
 }

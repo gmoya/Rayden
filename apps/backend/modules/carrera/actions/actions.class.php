@@ -53,7 +53,7 @@ class carreraActions extends autoCarreraActions
     $this->form = $this->configuration->getForm();
     $this->Carrera = $this->form->getObject();
 
-    if ($this->processForm($request, $this->form) && ($this->ajax = $this->isAjax()))
+    if (($this->ajax = $this->isAjax()) && $this->processForm($request, $this->form))
     {
     	return $this->renderPartial('carrera/notice', array());
     }
@@ -73,7 +73,7 @@ class carreraActions extends autoCarreraActions
     $this->Carrera = $this->getRoute()->getObject();
     $this->form = $this->configuration->getForm($this->Carrera);
 
-    if ($this->processForm($request, $this->form) && ($this->ajax = $this->isAjax()))
+    if (($this->ajax = $this->isAjax()) && $this->processForm($request, $this->form))
     {
     	return $this->renderPartial('carrera/notice', array());
     }

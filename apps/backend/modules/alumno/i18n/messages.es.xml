@@ -11,7 +11,7 @@
         <target>Nuevo Alumno</target>
       </trans-unit>
       <trans-unit id="3">
-        <source>Edit Alumnos</source>
+        <source>Edit Alumno</source>
         <target>Editar Alumno</target>
       </trans-unit>
     </body>

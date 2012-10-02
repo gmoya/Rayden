@@ -1,3 +1,21 @@
+empleo:
+  class: sfPropelRouteCollection
+  options:
+    model:                Empleo
+    module:               datoslaborales
+    prefix_path:          /datoslaborales
+    column:               id
+    with_wildcard_routes: true
+
+dato_academico:
+  class: sfPropelRouteCollection
+  options:
+    model:                DatoAcademico
+    module:               datosacademicos
+    prefix_path:          /datosacademicos
+    column:               id
+    with_wildcard_routes: true
+
 docente:
   class: sfPropelRouteCollection
   options:
@@ -12,8 +30,8 @@ alumno:
   options:
     model:                Alumno
     module:               alumno
-    prefix_path:          /alumno
-    column:               legajo
+    prefix_path:          alumno
+    column:               id
     with_wildcard_routes: true
 
 carrera:
