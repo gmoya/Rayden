@@ -47,12 +47,68 @@ html, body {
 	color: #0095B2;
 }
 
-#container {
+#content {
    margin: 0 auto;
     padding-top: 38px;
     position: relative;
     width: 990px;
 }
+
+
+#container.logout {
+	background-color: #F5F5F5;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+	width: 100%;
+}
+
+#container.logout #content {
+	position: static;
+}
+
+#login-box {
+  left: 50%;
+  margin: -72px 0 0 -123px;;
+  position: absolute;
+  top: 50%;
+	width: 245px;
+}
+
+#login-box input {
+	margin-bottom: 16px;
+}
+
+#login-box input[type='submit'] {
+	background-color: #474747;
+	font-family: "Helvetica Neue",Arial,sans-serif
+	font-size: 13px;
+  margin-left: 68px;
+	padding: 11px 22px 12px;
+	width: 104px;
+}
+
+#login-box input[type='submit']:hover {
+	background-color: #000;
+}
+
+#login-box .error_list {
+    background-color: #FFF68D;
+    background-image: url("../img/login/icon_error.gif");
+    background-position: 12px center;
+    background-repeat: no-repeat;
+    border: 1px solid #E3D623;
+    font-size: 11px;
+    margin: 0 0 15px;
+    padding: 10px 8px 10px 50px;
+}
+
+/* EMPIEZA EL BACKEND */
 
 .sf_admin_action_new {
 	display: inline-block;
@@ -124,7 +180,9 @@ html, body {
   width: 299px;
 }
 
-input[type='text'], textarea {
+input[type='text'],
+input[type='password'], 
+textarea {
     border-color: #D9D9D9;
     border-radius: 5px;
     border-style: solid;
@@ -133,6 +191,12 @@ input[type='text'], textarea {
     font-size: 15px;
     height: 25px;
     padding-left: 10px;
+}
+
+input[type='text']:focus,
+input[type='password']:focus, 
+textarea:focus {
+	border-color: #999999;
 }
 
 textarea {

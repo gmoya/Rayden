@@ -34,6 +34,15 @@
         <source>User created</source>
         <target>Creada por</target>
       </trans-unit>
+      <trans-unit id="9">
+        <source>Required.</source>
+        <target>Requerido.</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>The username and/or password is invalid.</source>
+        <target>El usuario y/o la clave es incorrecta.</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>
