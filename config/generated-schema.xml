@@ -9,8 +9,6 @@
       <reference local="persona_id" foreign="id" />
     </foreign-key>
     <column name="beca" type="BOOLEAN" required="false" default="" />
-    <column name="regular" type="BOOLEAN" required="false" default="1" />
-    <column name="regular_at" type="TIMESTAMP" required="false" />
     <column name="estado" type="INTEGER" size="1" required="true" default="0" />
     <column name="created_at" type="timestamp" />
     <column name="created_by_id" type="INTEGER" required="true" />
@@ -287,10 +285,6 @@
   <table name="tipo_titulo">
     <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
     <column name="descripcion" type="VARCHAR" size="100" required="true" />
-  </table>
-
-  <table name="usuario">
-    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
   </table>
 
 </database>

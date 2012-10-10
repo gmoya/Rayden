@@ -1,9 +1,9 @@
 <?php use_helper('I18N', 'Date') ?>
 <?php include_partial('alumno/assets') ?>
+<?php include_partial('alumno/flashes') ?>
 
-  <?php include_partial('alumno/flashes') ?>
 <div id="show-alumno">
-	<div id="info-perfil">
+	<div id="info-perfil" class="lateral-izquierdo">
 		<div id="foto-perfil">
 			<span><img src="/images/<?php echo strtolower($Alumno->getPersona()->getTipoSexo()) ?>.gif" /></span>
 		</div>
@@ -23,33 +23,37 @@
 				<li> <?php echo ($Alumno->getBeca()) ? 'Becado' : '' ?></li>
 			</ul>
 		</div>
-	</div>
-	  
-		<div class="perfil-lateral">
-			<div class="datos-academicos pin">
-    		<div class="pin-header">
-					<h2>
-						Datos Académicos
-						<span class="sf_admin_action_new"><a class="colorbox icon new" href="<?php echo url_for('/datosacademicos/new') ?>" title="Nuevo"> </a></span>
-					</h2>	
-    		</div>
-				<div class="pin-content">
-					No hay datos académicos.
-				</div>
-  		</div>
-		
-			<div class="datos-laborales pin">
-  	  	<div class="pin-header">
-					<h2>
-						Datos Laborales
-						<span class="sf_admin_action_new"><a class="colorbox icon new" href="<?php echo url_for('/datoslaborales/new') ?>" title="Nuevo"> </a></span>
-					</h2>
-    		</div>
-				<div class="pin-content">
-					No hay datos laborales.
-				</div>
-  		</div>
+
+		<div id="mi-domicilio" class="domicilios pin">
+			<?php include_partial('persona/mis_domicilios', array('Persona' => $Alumno->getPersona(), 'modulo' => 'alumno')) ?>
   	</div>
+  </div>
+	
+	<div class="perfil-lateral lateral-derecho">
+		<div class="datos-academicos pin">
+  		<div class="pin-header">
+				<h2>
+					Datos Académicos
+					<span class="sf_admin_action_new"><a class="colorbox icon new" href="<?php echo url_for('/datosacademicos/new') ?>" title="Nuevo"> </a></span>
+				</h2>	
+  		</div>
+			<div class="pin-content">
+				No hay datos académicos.
+			</div>
+  	</div>
+	
+		<div class="datos-laborales pin">
+    	<div class="pin-header">
+				<h2>
+					Datos Laborales
+					<span class="sf_admin_action_new"><a class="colorbox icon new" href="<?php echo url_for('/datoslaborales/new') ?>" title="Nuevo"> </a></span>
+				</h2>
+  		</div>
+			<div class="pin-content">
+				No hay datos laborales.
+			</div>
+  	</div>
+  </div>
 
 	<div class="clear"></div>
 </div>

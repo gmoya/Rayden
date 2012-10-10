@@ -11,12 +11,18 @@ all:
     Alumno:
       preinscripto: 0
       inscripto: 1
-      regular: 2
+      expulsado: 2
       abandono: 3
       cambio_de_instituto: 4
       rechazado: 5
       egresado: 6
-    docente:
+    AlumnoBaja:
+      expulsado: 2
+      abandono: 3
+      cambio_de_instituto: 4
+      rechazado: 5
+      egresado: 6
+    Docente:
       suplente: 0
       interino: 1
       titular: 2

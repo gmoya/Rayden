@@ -14,7 +14,7 @@ default:
 
   stylesheets:    [ main.css, colorbox.css, backend.css ]
 
-  javascripts:    [ jquery-1.8.2.min.js, jquery.colorbox.js, functions.js ]
+  javascripts:    [ jquery-1.8.2.min.js, jquery.colorbox.js, functions.js, jquery.validate.js ]
 
   has_layout:     true
   layout:         layout

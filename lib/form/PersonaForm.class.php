@@ -39,9 +39,12 @@ class PersonaForm extends BasePersonaForm
     $this->setValidator('tipo_documento_id', new sfValidatorPropelChoice(array('model' => 'TipoDocumento', 'column' => 'id', 'required' => true)));
     $this->setValidator('nro_documento'   , new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => true)));
     $this->setValidator('email'           , new sfValidatorString(array('max_length' => 50, 'required' => true)));
-    $this->setValidator('nacionalidad_id' , new sfValidatorPropelChoice(array('model' => 'Nacionalidad', 'column' => 'id', 'required' => true)));
-    $this->setValidator('estado_civil_id' , new sfValidatorPropelChoice(array('model' => 'EstadoCivil', 'column' => 'id', 'required' => true)));
+    $this->setValidator('sexo_id' , new sfValidatorPropelChoice(array('model' => 'TipoSexo', 'column' => 'id', 'required' => true)));
    	$this->validatorSchema['fecha_nacimiento']->setOption('required', true);
+
+		# TODO validadores sacados para acelerar el alta - consultar con Casco requeridos
+		#    $this->setValidator('nacionalidad_id' , new sfValidatorPropelChoice(array('model' => 'Nacionalidad', 'column' => 'id', 'required' => true)));
+		#    $this->setValidator('estado_civil_id' , new sfValidatorPropelChoice(array('model' => 'EstadoCivil', 'column' => 'id', 'required' => true)));
   }
 
 }

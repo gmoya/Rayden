@@ -1,8 +1,7 @@
 <script type="text/javascript">
 <?php if ($isNew == true) : ?>
 	 setTimeout(function(){ document.location.href="<?php echo url_for('alumno/show?id='.$alumno->getId()) ?>";}, 1000);
-<?php endif ?>
-
+<?php  else : ?>
   jQuery(document).ready(function() { 
     jQuery.ajax({
       type:'GET',
@@ -15,6 +14,7 @@
       url: '<?php echo url_for('alumno/listAjax') ?>'
     });
 	});
+<?php endif ?>
 
 </script>
 

@@ -1,3 +1,21 @@
+persona:
+  class: sfPropelRouteCollection
+  options:
+    model:                Persona
+    module:               persona
+    prefix_path:          /persona
+    column:               id
+    with_wildcard_routes: true
+
+domicilio:
+  class: sfPropelRouteCollection
+  options:
+    model:                Domicilio
+    module:               domicilio
+    prefix_path:          /domicilio
+    column:               id
+    with_wildcard_routes: true
+
 empleo:
   class: sfPropelRouteCollection
   options:
@@ -30,7 +48,7 @@ alumno:
   options:
     model:                Alumno
     module:               alumno
-    prefix_path:          alumno
+    prefix_path:          /alumno
     column:               id
     with_wildcard_routes: true
 

@@ -17,5 +17,37 @@
  * @package    lib.model
  */
 class Domicilio extends BaseDomicilio {
+	public function __toString()
+	{
+      $domicilio = $this->getCalle();
+      $domicilio .= ' '.$this->getAltura();
+      $domicilio .= ($this->getPiso()) ? ' '.$this->getPiso() : '';
+      $domicilio .= ($this->getDpto()) ? ' '.$this->getDpto() : '';
+      $domicilio .= ($this->getEscalera()) ? ' Escalera: '.$this->getEscalera() : '';
+      $domicilio .= ($this->getTorre()) ? ' Torre: '.$this->getTorre() : '';
+      $domicilio .= ($this->getNudo()) ? ' Nudo: '.$this->getNudo() : '';
+      $domicilio .= ($this->getAla()) ? ' Ala: '.$this->getAla() : '';
+      $domicilio .= ($this->getParcela()) ? ' Parcela: '.$this->getParcela() : '';
+      $domicilio .= ($this->getCodigoPostal()) ? ' ('.$this->getCodigoPostal().')' : '';
 
+			return $domicilio;
+	}
+
+  public function getDomicilioCompleto()
+  {
+      $domicilio = $this->getCalle();
+      $domicilio .= ' '.$this->getAltura();
+      $domicilio .= ($this->getPiso()) ? ' '.$this->getPiso() : '';
+      $domicilio .= ($this->getDpto()) ? ' '.$this->getDpto() : '';
+      $domicilio .= ($this->getEscalera()) ? ' Escalera: '.$this->getEscalera() : '';
+      $domicilio .= ($this->getTorre()) ? ' Torre: '.$this->getTorre() : '';
+      $domicilio .= ($this->getNudo()) ? ' Nudo: '.$this->getNudo() : '';
+      $domicilio .= ($this->getAla()) ? ' Ala: '.$this->getAla() : '';
+      $domicilio .= ($this->getParcela()) ? ' Parcela: '.$this->getParcela() : '';
+      $domicilio .= ($this->getCodigoPostal()) ? ' ('.$this->getCodigoPostal().')' : '';
+      $domicilio .= ($this->getLocalidadId()) ? ' - '.$this->getLocalidad()->__toString() : '';
+      $domicilio .= ($this->getProvinciaId()) ? ' - '.$this->getProvincia()->__toString() : '';
+
+      return $domicilio;
+  }
 } // Domicilio

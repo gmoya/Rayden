@@ -1,6 +1,6 @@
 <?php use_helper('I18N') ?>
 <div id="login-box">
-	<div id="login-box-header"><a href="<?php echo url_for('@homepage') ?>"><img src="/images/chinchis.png" /></a></div>
+	<div id="login-box-header"><!--<a href="<?php echo url_for('@homepage') ?>"><img src="/images/chinchis.png" /></a>--></div>
 	<div id="login-form">
 		<form action="<?php echo url_for('@sf_guard_signin') ?>" method="post">
   		<div id="form-body">

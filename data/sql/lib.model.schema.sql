@@ -16,8 +16,6 @@ CREATE TABLE `alumno`
 	`legajo` INTEGER,
 	`persona_id` INTEGER  NOT NULL,
 	`beca` TINYINT default 0,
-	`regular` TINYINT default 1,
-	`regular_at` DATETIME,
 	`estado` INTEGER(1) default 0 NOT NULL,
 	`created_at` DATETIME,
 	`created_by_id` INTEGER  NOT NULL,
@@ -469,19 +467,6 @@ CREATE TABLE `tipo_titulo`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`descripcion` VARCHAR(100)  NOT NULL,
-	PRIMARY KEY (`id`)
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
-#-- usuario
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `usuario`;
-
-
-CREATE TABLE `usuario`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (`id`)
 )Type=InnoDB;
 

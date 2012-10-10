@@ -18,4 +18,8 @@
  */
 class Provincia extends BaseProvincia {
 
+	public function __toString()
+	{
+		return $this->getNombre();
+	}
 } // Provincia

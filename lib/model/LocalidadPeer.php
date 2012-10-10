@@ -18,4 +18,20 @@
  */
 class LocalidadPeer extends BaseLocalidadPeer {
 
+	static public function doSelectByProvincia($provincia_id)
+	{
+  	$c= new Criteria();
+
+    if ($provincia_id != '')
+		{
+				$c= new Criteria();
+        $c->add(LocalidadPeer::PROVINCIA_ID, $provincia_id);
+        $c->addAscendingOrderByColumn(self::NOMBRE);
+
+        return  LocalidadPeer::doSelect($c);
+    }
+
+    return  '';
+  }
+
 } // LocalidadPeer

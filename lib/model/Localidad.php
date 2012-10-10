@@ -18,4 +18,8 @@
  */
 class Localidad extends BaseLocalidad {
 
+	public function __toString()
+	{
+		return $this->getNombre();
+	}
 } // Localidad

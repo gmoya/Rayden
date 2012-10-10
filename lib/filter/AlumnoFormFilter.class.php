@@ -56,6 +56,13 @@ class AlumnoFormFilter extends BaseAlumnoFormFilter
     $criteria->add(AlumnoPeer::ID, $values, Criteria::EQUAL);
   }
 
+  public function addNroDocumentoColumnCriteria(Criteria $criteria, $field, $values)
+  {
+    $criteria->addJoin(array(AlumnoPeer::PERSONA_ID,), array(PersonaPeer::ID,));
+    $criteria->add(PersonaPeer::NRO_DOCUMENTO, $values, Criteria::EQUAL);
+  }
+
+
   public function getFields()
   {
     $fields = parent::getFields();

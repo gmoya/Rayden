@@ -14,8 +14,8 @@ require_once dirname(__FILE__).'/../lib/alumnoGeneratorHelper.class.php';
 class alumnoActions extends autoAlumnoActions
 {
   public function executeShow(sfWebRequest $request) 
-  {      
-		$this->Alumno = AlumnoPeer::retrieveByPk($request->getParameter('id'));
+  {
+		$this->Alumno = $this->getRoute()->getObject();
   }
 
   public function executeNew(sfWebRequest $request)
@@ -59,6 +59,18 @@ class alumnoActions extends autoAlumnoActions
     $this->setTemplate('edit');
   }
 
+ 	public function executeBaja(sfWebRequest $request)
+	{
+		$this->Alumno = AlumnoPeer::retrieveByPk($request->getParameter('id'));
+		$this->estados = Alumno::getEstadosBaja();
+
+		if ($params = $request->getPostParameters()) {
+			$this->Alumno->darBaja($params, $this->getUser());
+    	
+			return $this->renderPartial('alumno/notice', array('alumno' => $this->Alumno, 'isNew' => false));
+		}
+	}
+
  	public function executeListAjax(sfWebRequest $request)
 	{
     if ($request->getParameter('sort') && $this->isValidSortColumn($request->getParameter('sort')))
@@ -96,18 +108,12 @@ class alumnoActions extends autoAlumnoActions
     
 		if ($form->isValid())
     {
-      $notice = $form->getObject()->isNew() ? 'Los datos han sido registrados exitosamente.' : 'Los datos han sido registrados exitosamente.';
+      $notice = 'Los datos han sido registrados exitosamente.';
 
-#			TODO Se hardcodea el usuario porque aún no está el módulo de Usuarios			
-#			$form->getObject()->setUserCreated($request->getUser()->getId());
 			if ($form->isNew())
-			{
-				$form->getObject()->setCreatedById(1);
-			}
+				$form->getObject()->setCreatedById($this->getUser()->getId());
 			else
-			{
-				$form->getObject()->setUpdatedById(1);
-			}
+				$form->getObject()->setUpdatedById($this->getUser()->getId());
 
       $alumno = $form->save();
 

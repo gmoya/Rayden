@@ -80,15 +80,19 @@ html, body {
 	width: 245px;
 }
 
+#login-form form {
+	text-align: center;
+}
+
 #login-box input {
 	margin-bottom: 16px;
+	background-color: #fff;
 }
 
 #login-box input[type='submit'] {
 	background-color: #474747;
-	font-family: "Helvetica Neue",Arial,sans-serif
+	font-family: "Helvetica Neue",Arial,sans-serif;
 	font-size: 13px;
-  margin-left: 68px;
 	padding: 11px 22px 12px;
 	width: 104px;
 }
@@ -171,6 +175,10 @@ html, body {
 	font-size: 12px;
 }
 
+#sf_admin_container .sf_admin_form_row {
+	border: 0;
+}
+
 .form h1 {
 	color: #333333;
 	font-size: 23px;
@@ -183,6 +191,7 @@ html, body {
 input[type='text'],
 input[type='password'], 
 textarea {
+	background: #F5F5F5;
     border-color: #D9D9D9;
     border-radius: 5px;
     border-style: solid;
@@ -195,16 +204,20 @@ textarea {
 
 input[type='text']:focus,
 input[type='password']:focus, 
-textarea:focus {
+select:focus, textarea:focus {
 	border-color: #999999;
 }
 
 textarea {
 	height: 60px;	
+	padding-left: 0;
 }
 
+textarea.error {
+	background: #F5F5F5 !important;
+}
 select {
-	background-color: #F5F5F5;
+	background: #F5F5F5 !important;
 	border: 1px solid #D9D9D9;
   border-radius: 5px;
   padding: 3px;
@@ -245,6 +258,7 @@ input[type='submit'] {
 	width: 692px;
 }
 
+#form-domicilio.form,
 .sf_admin_list table,
 .sf_admin_filter table {
 	font-size: 11px;
@@ -264,8 +278,12 @@ input[type='submit'] {
 }
 
 /*** PERFIL ***/
-#info-perfil {
+.lateral-izquierdo {
 	float: left;
+}
+
+.lateral-derecho {
+	float: right;
 }
 
 #foto-perfil {
@@ -282,6 +300,7 @@ input[type='submit'] {
 #datos-perfil {
 	display: inline;
 	float: left;
+	margin-bottom: 20px;
 }
 
 #datos-perfil ul {
@@ -295,9 +314,9 @@ input[type='submit'] {
 }
 
 .nombre-perfil {
-	font-size: 16px;
+	font-size: 30px;
 	font-weight: bold;
-	margin-bottom: 5px;
+	margin-bottom: 15px;
 }
 
 .perfil-lateral {
@@ -305,17 +324,21 @@ input[type='submit'] {
 }
 
 .pin {
+	background-color: #FFF;
 	border: 1px solid #CBCBCB;
 	margin-bottom: 15px;
+	padding: 10px;
 }
 
 .pin-header {
-    background-color: #666666;
-    color: #FFFFFF;
-    font-size: 12px;
-    height: 30px;
-    padding: 3px 21px 0 19px;
-    width: 430px;
+	background-color: #FFF;
+/*    color: #666; */
+  color: #2599CF;
+  font-size: 16px;
+  height: 30px;
+	margin-bottom: 10px;
+  padding: 3px 21px 0 19px;
+  width: 400px;
 }
 
 .pin-header h2 {
@@ -325,10 +348,168 @@ input[type='submit'] {
 
 .pin-content {
 	background-color: #fff;
-	padding: 10px 21px 5px;
+	padding: 10px 20px 5px;
 }
 
+.domicilios.pin,
 .clear {
 	clear: both;
 }
 
+.pin-content .pin-item {
+    border-bottom: 1px dotted #CBCBCB;
+		overflow: hidden;
+    padding: 10px;
+}
+
+.pin-content .pin-item:first-child {
+	padding-top: 0;
+}
+
+.pin-content .pin-item:last-child {
+	border-bottom:0;
+	padding-bottom: 0;
+}
+
+.item-flotante-izq {
+	float: left;
+	width: 330px;
+}
+
+.item-flotante-der {
+	float: right;
+}
+
+#sf_admin_container p.error {
+	background: transparent;
+  border-bottom: 0;
+  border-top: 0;
+  color: red;
+  font-style: italic;
+  margin: 0;
+  padding: 0px;
+	width: 200px;
+}
+
+
+#sf_admin_container select.error,
+#sf_admin_container textarea.error {
+	padding: 3px;
+	color: #626161;
+}
+
+#sf_admin_container select.error:focus,
+#sf_admin_container textarea.error:focus {
+	border-color: #999999;
+}
+
+#sf_admin_container .campo-small input {
+	width: 50px;
+}
+
+
+/* USUARIO */
+#cuenta-menu {
+    height: 80px;
+/*    line-height: 80px;*/
+    min-width: 200px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    vertical-align: middle;
+    z-index: 2;
+}
+
+.perfil-menu {
+    color: #333333;
+    float: right;
+    height: 100%;
+    max-width: 120px;
+    padding: 0 20px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.perfil-menu:hover {
+	background-color: #E1F7F7;
+}
+
+#username {
+    display: inline-block;
+    font-size: 14px;
+    height: 80px;
+    line-height: 80px;
+    max-width: 68px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.icon-list {
+    margin-right: 0;
+    vertical-align: -1px;
+    display: inline-block;
+    height: 7px;
+    margin: 0 -8px 0 1px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 8px;
+}
+
+.icon-open {
+    background: url("../images/icons/arrow_down.png");
+}
+
+.icon-close {
+    background: url("../images/icons/arrow_up.png");
+}
+
+.perfil-menu.activo {
+    background-color: #4ABDBD;
+    color: #FFFFFF;
+}
+
+#perfil-menu-list {
+    -moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    border-top: 10px solid #4ABDBD;
+    bottom: auto;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+    left: auto;
+    padding-top: 5px;
+		position: absolute;
+    right: 0px;
+    top: 80px;
+		width: 190px;
+}
+
+#perfil-menu-list span {
+	display: block;
+	cursor: pointer;
+}
+
+#perfil-menu-list span:hover {
+	background-color: #E1F7F7;
+}
+
+#perfil-menu-list span a {
+    color: #333333;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+#perfil-menu-list span#logout a {
+    background: url("/images/icons/on.png") no-repeat scroll 10px 7px transparent;
+    padding-left: 40px;
+}
+
+#perfil-menu-list span#logout:hover a {
+    background: url("/images/icons/off.png") no-repeat scroll 10px 7px transparent;
+}
+
+/* FIN USUARIO */
+
+.oculto {
+	display: none;
+}

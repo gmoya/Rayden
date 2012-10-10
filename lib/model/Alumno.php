@@ -67,6 +67,11 @@ class Alumno extends BaseAlumno {
     return $estadosPosibles;
   }
 
+  static public function getEstadosBaja()
+	{
+    return sfConfig::get('app_estados_AlumnoBaja');
+	}
+
   static public function search($arg = null)
   {
     if (null === $arg || '' === $arg) { return ''; }
@@ -76,4 +81,19 @@ class Alumno extends BaseAlumno {
 		return ($alumno && (($nombre = $alumno->getPersona()->getNombreCompleto()) != '')) ? $nombre : '';
   }
 
+	public function darBaja($params, $usuario)
+	{
+		$this->setEstado($params['alumno']['estado']);
+		$this->getPersona()->setObservaciones($this->getPersona()->getObservaciones().'\r\n'.$params['alumno']['observaciones']);
+		$this->setDeletedAt(date('Y-m-d H:i:s'));
+		$this->setDeletedById($usuario->getId());
+		
+		$this->getPersona()->save();
+		$this->save();
+	}
+
+	public function isDadoBaja()
+	{
+		return in_array($this->getEstado(), sfConfig::get('app_estados_AlumnoBaja'));
+	}
 } // Alumno

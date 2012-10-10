@@ -1,32 +1,5 @@
 <table>
 	<tr>
-		<td>  <?php echo $form['legajo']->renderLabel() ?></td>
-		<td  class="campos" colspan="2">
-		  <div class="">
-		    <div>
-		          <?php echo $form['legajo']->render() ?>
-		          <?php echo $form['legajo']->renderError() ?>
-		          <?php if ($help = $form['legajo']->renderHelp()) : ?>
-		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
-		          <?php endif ?>
-		    </div>
-		  </div>
-		</td>
-		<td>  <?php echo $form['beca']->renderLabel() ?></td>
-		<td  class="campos">
-		  <div class="">
-		    <div>
-		          <?php echo $form['beca']->render() ?>
-		          <?php echo $form['beca']->renderError() ?>
-		          <?php if ($help = $form['beca']->renderHelp()) : ?>
-		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
-		          <?php endif ?>
-		    </div>
-		  </div>
-		</td>
-	</tr>
-
-	<tr>
 		<td>  <?php echo $form['persona']['nombre']->renderLabel() ?></td>
 		<td  class="campos" colspan="2">
 		  <div class="<?php echo $class['persona']['nombre'] ?><?php $form['persona']['nombre']->hasError() and print ' errors' ?>">
@@ -167,6 +140,24 @@
 		          <?php endif ?>
 		    </div>
 		  </div>
+		</td>
+	</tr>
+
+	<tr>
+		<td>  <?php echo $form['beca']->renderLabel() ?></td>
+		<td  class="campos">
+		  <div class="">
+		    <div>
+		          <?php echo $form['beca']->render() ?>
+		          <?php echo $form['beca']->renderError() ?>
+		          <?php if ($help = $form['beca']->renderHelp()) : ?>
+		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
+		          <?php endif ?>
+		    </div>
+		  </div>
+		</td>
+		<td>  </td>
+		<td  class="campos" colspan="2">
 		</td>
 	</tr>
 
