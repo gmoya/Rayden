@@ -32,12 +32,49 @@ class Carrera extends BaseCarrera
 		return ($carrera && (($nombre = $carrera->getNombre()) != '')) ? $nombre : '';
   }
 
-	# TODO por el momento no hace nada	
-	public function delete(PropelPDO $con = null)
+  static public function getEstadosBaja()
 	{
-		if ($con === null) {
-			$con = Propel::getConnection(CarreraPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
-		}
+    return sfConfig::get('app_estados_CarreraBaja');
+	}
+
+  public function getNombreEstado()
+  {
+    $estadosPosibles = sfConfig::get('app_estados_Carrera');
+    $nombreEstado = array_keys($estadosPosibles, $this->getEstado());
+
+    return(ucwords($nombreEstado[0]));
+  }
+
+  static public function getIdByNombreEstado($nombre = null, $desc = false)
+  {
+    $estadosPosibles = sfConfig::get('app_estados_Carrera');
+
+    if (!is_null($nombre))
+    {
+      return $estadosPosibles[$nombre];
+    }
+
+    if ($desc)
+    {
+      return $nombreEstado = array_keys($estadosPosibles);
+    }
+
+    return $estadosPosibles;
+  }
+
+	public function isDadaBaja()
+	{
+		return in_array($this->getEstado(), sfConfig::get('app_estados_CarreraBaja'));
+	}
+
+	public function darBaja($params, $usuario)
+	{
+		$this->setEstado($params['carrera']['estado']);
+		$this->setObservaciones($this->getObservaciones().'\r\n'.$params['carrera']['observaciones']);
+		$this->setDeletedAt(date('Y-m-d H:i:s'));
+		$this->setDeletedById($usuario->getId());
+		
+		$this->save();
 	}
 
 } // Carrera

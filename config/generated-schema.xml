@@ -31,6 +31,8 @@
     <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
     <column name="nombre" type="VARCHAR" size="100" required="true" />
     <column name="descripcion" type="LONGVARCHAR" required="true" />
+    <column name="estado" type="INTEGER" size="1" required="true" default="0" />
+    <column name="observaciones" type="LONGVARCHAR" required="false" />
     <column name="created_at" type="timestamp" />
     <column name="created_by_id" type="INTEGER" required="true" />
     <foreign-key foreignTable="sf_guard_user">
@@ -68,8 +70,8 @@
     </foreign-key>
     <column name="estatal" type="BOOLEAN" required="true" default="1" />
     <column name="visado" type="BOOLEAN" required="false" default="" />
-    <column name="fecha_visado" type="DATE" required="true" />
-    <column name="observaciones" type="VARCHAR" size="255" required="false" />
+    <column name="fecha_visado" type="DATE" required="false" />
+    <column name="observaciones" type="LONGVARCHAR" required="false" />
     <column name="created_at" type="timestamp" />
     <column name="created_by_id" type="INTEGER" required="true" />
     <foreign-key foreignTable="sf_guard_user">
@@ -171,7 +173,7 @@
     </foreign-key>
     <column name="cuit" type="INTEGER" size="11" />
     <column name="fecha_inicio" type="DATE" required="true" />
-    <column name="fecha_fin" type="DATE" required="true" />
+    <column name="fecha_fin" type="DATE" required="false" />
     <column name="cargo" type="VARCHAR" size="50" required="false" />
     <column name="lugar_trabajo" type="VARCHAR" size="100" required="false" />
     <column name="telefono" type="VARCHAR" size="20" required="false" />

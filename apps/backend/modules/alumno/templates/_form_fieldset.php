@@ -144,24 +144,6 @@
 	</tr>
 
 	<tr>
-		<td>  <?php echo $form['beca']->renderLabel() ?></td>
-		<td  class="campos">
-		  <div class="">
-		    <div>
-		          <?php echo $form['beca']->render() ?>
-		          <?php echo $form['beca']->renderError() ?>
-		          <?php if ($help = $form['beca']->renderHelp()) : ?>
-		            <div class="help"><?php echo __($help, array(), 'messages') ?></div>
-		          <?php endif ?>
-		    </div>
-		  </div>
-		</td>
-		<td>  </td>
-		<td  class="campos" colspan="2">
-		</td>
-	</tr>
-
-	<tr>
 		<td>  <?php echo $form['persona']['observaciones']->renderLabel() ?></td>
 		<td  class="campos" colspan="5">
 		  <div class="<?php echo $class['persona']['observaciones'] ?><?php $form['persona']['observaciones']->hasError() and print ' errors' ?>">

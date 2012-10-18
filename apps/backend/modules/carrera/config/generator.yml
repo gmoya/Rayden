@@ -15,8 +15,9 @@ generator:
       actions: ~
       fields:  ~
       list:
-        display: [ id, nombre, descripcion, _creada, _creada_por ] 
-      filter:  ~
+        display: [ id, _nombre, _estado, _creada, _creada_por ] 
+      filter:
+        display: [ id, estado ]
       form:    ~
       edit:    ~
       new:     ~

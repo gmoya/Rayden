@@ -34,14 +34,6 @@ class Alumno extends BaseAlumno {
 		return $this->getPersona()->getNombreCompleto();
 	}
 
-	# TODO por el momento no hace nada	
-	public function delete(PropelPDO $con = null)
-	{
-		if ($con === null) {
-			$con = Propel::getConnection(AlumnoPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
-		}
-	}
-
   public function getNombreEstado()
   {
     $estadosPosibles = sfConfig::get('app_estados_Alumno');
@@ -84,9 +76,11 @@ class Alumno extends BaseAlumno {
 	public function darBaja($params, $usuario)
 	{
 		$this->setEstado($params['alumno']['estado']);
-		$this->getPersona()->setObservaciones($this->getPersona()->getObservaciones().'\r\n'.$params['alumno']['observaciones']);
 		$this->setDeletedAt(date('Y-m-d H:i:s'));
 		$this->setDeletedById($usuario->getId());
+
+		$obs = ($previa = $this->getPersona()->getObservaciones()) ? $previa." \r\n". $params['alumno']['observaciones'] : $params['alumno']['observaciones'];
+		$this->getPersona()->setObservaciones($obs);
 		
 		$this->getPersona()->save();
 		$this->save();

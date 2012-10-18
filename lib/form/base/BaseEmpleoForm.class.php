@@ -37,7 +37,7 @@ abstract class BaseEmpleoForm extends BaseFormPropel
       'tipo_empleo_id' => new sfValidatorPropelChoice(array('model' => 'TipoEmpleo', 'column' => 'id')),
       'cuit'           => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
       'fecha_inicio'   => new sfValidatorDate(),
-      'fecha_fin'      => new sfValidatorDate(),
+      'fecha_fin'      => new sfValidatorDate(array('required' => false)),
       'cargo'          => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'lugar_trabajo'  => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'telefono'       => new sfValidatorString(array('max_length' => 20, 'required' => false)),

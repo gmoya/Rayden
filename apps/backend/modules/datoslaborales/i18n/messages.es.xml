@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en_US" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>New Datoslaborales</source>
+        <target>Nuevo Dato Laboral</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Edit Datoslaborales</source>
+        <target>Editar Dato Laboral</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+

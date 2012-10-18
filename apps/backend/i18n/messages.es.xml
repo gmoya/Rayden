@@ -15,16 +15,16 @@
         <target>Tipo de archivo inválido (%mime_type%).</target>
       </trans-unit>
       <trans-unit id="4">
-        <source>Carrera List</source>
-        <target>Carreras</target>
+        <source>yes or no</source>
+        <target>Indistinto</target>
       </trans-unit>
       <trans-unit id="5">
-        <source>New Carrera</source>
-        <target>Nueva Carrera</target>
+        <source>yes</source>
+        <target>Sí</target>
       </trans-unit>
       <trans-unit id="6">
-        <source>Edit Carrera</source>
-        <target>Editar Carrera</target>
+        <source>no</source>
+        <target>No</target>
       </trans-unit>
       <trans-unit id="7">
         <source>Created at</source>

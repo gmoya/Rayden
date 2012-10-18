@@ -16,7 +16,7 @@ abstract class BaseEmpleoFormFilter extends BaseFormFilterPropel
       'tipo_empleo_id' => new sfWidgetFormPropelChoice(array('model' => 'TipoEmpleo', 'add_empty' => true)),
       'cuit'           => new sfWidgetFormFilterInput(),
       'fecha_inicio'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'fecha_fin'      => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'fecha_fin'      => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'cargo'          => new sfWidgetFormFilterInput(),
       'lugar_trabajo'  => new sfWidgetFormFilterInput(),
       'telefono'       => new sfWidgetFormFilterInput(),

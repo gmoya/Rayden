@@ -18,4 +18,8 @@
  */
 class TipoTitulo extends BaseTipoTitulo {
 
+	public function __toString()
+	{
+		return $this->getDescripcion();
+	}
 } // TipoTitulo

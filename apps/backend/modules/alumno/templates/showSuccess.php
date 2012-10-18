@@ -9,19 +9,7 @@
 		</div>
 		
 		<div id="datos-perfil">
-			<ul>
-				<li class="nombre-perfil">
-					<?php echo $Alumno ?>
-    			<a id="alumno_edit" title="Editar" rel="facebox" href="<?php echo url_for('alumno/edit?id='.$Alumno->getLegajo()) ?>">    </a>
-				</li>
-				<li> <?php echo $Alumno->getPersona()->getEdad() ?>	años</li>
-				<li> <?php echo $Alumno->getPersona()->getTipoSexo() ?>	- <?php echo $Alumno->getPersona()->getEstadoCivil() ?></li>
-				<li> Nacido el <?php echo $Alumno->getPersona()->getFechaNacimiento('d/m/Y') ?>	en <?php echo $Alumno->getPersona()->getLugarNacimiento() ?></li>
-				<li> <?php echo $Alumno->getPersona()->getDocumentoCompleto() ?></li>
-				<li> Celular: <?php echo $Alumno->getPersona()->getCelular() ?></li>
-				<li> Email: <?php echo $Alumno->getPersona()->getEmail() ?></li>
-				<li> <?php echo ($Alumno->getBeca()) ? 'Becado' : '' ?></li>
-			</ul>
+			<?php include_partial('alumno/datos_perfil', array('Alumno' => $Alumno)) ?>
 		</div>
 
 		<div id="mi-domicilio" class="domicilios pin">
@@ -30,28 +18,12 @@
   </div>
 	
 	<div class="perfil-lateral lateral-derecho">
-		<div class="datos-academicos pin">
-  		<div class="pin-header">
-				<h2>
-					Datos Académicos
-					<span class="sf_admin_action_new"><a class="colorbox icon new" href="<?php echo url_for('/datosacademicos/new') ?>" title="Nuevo"> </a></span>
-				</h2>	
-  		</div>
-			<div class="pin-content">
-				No hay datos académicos.
-			</div>
+		<div id="mis-datos-academicos" class="datos-academicos pin">
+			<?php include_partial('persona/mis_datos_academicos', array('Persona' => $Alumno->getPersona(), 'modulo' => 'alumno')) ?>
   	</div>
 	
-		<div class="datos-laborales pin">
-    	<div class="pin-header">
-				<h2>
-					Datos Laborales
-					<span class="sf_admin_action_new"><a class="colorbox icon new" href="<?php echo url_for('/datoslaborales/new') ?>" title="Nuevo"> </a></span>
-				</h2>
-  		</div>
-			<div class="pin-content">
-				No hay datos laborales.
-			</div>
+		<div id="mis-empleos" class="datos-laborales pin">
+			<?php include_partial('persona/mis_empleos', array('Persona' => $Alumno->getPersona(), 'modulo' => 'alumno')) ?>
   	</div>
   </div>
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en_US" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>Carrera List</source>
+        <target>Carreras</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>New Carrera</source>
+        <target>Nuevo Carrera</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Edit Carrera</source>
+        <target>Editar Carrera</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+

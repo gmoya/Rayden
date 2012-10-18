@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en_US" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>New Datosacademicos</source>
+        <target>Nuevo Dato Académico</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Edit Datosacademicos</source>
+        <target>Editar Dato Académico</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+

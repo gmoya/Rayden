@@ -13,7 +13,7 @@ class CarreraFormFilter extends BaseCarreraFormFilter
   {
 		unset($this['descripcion'], $this['created_at'], $this['created_by_id'], 
 					$this['updated_at'], $this['updated_by_id'], $this['deleted_at'], 
-					$this['deleted_by_id'], $this['nombre']
+					$this['deleted_by_id'], $this['nombre'], $this['observaciones']
 				);
 
     $contexto = sfContext::getInstance();
@@ -27,6 +27,15 @@ class CarreraFormFilter extends BaseCarreraFormFilter
 
 		$this->validatorSchema['id'] = new sfValidatorPass(array('required' => false));
 
+    $this->widgetSchema['estado'] = new sfWidgetFormChoice(array(
+      	'choices' => array('' => '') + Carrera::getIdByNombreEstado(null, true),
+    ));
+
+    $this->validatorSchema['estado'] = new sfValidatorChoice(array(
+      'required' => false,
+      'choices' => Carrera::getIdByNombreEstado()
+    ));
+
 	  $this->validatorSchema->setOption('allow_extra_fields', true);
 	  $this->validatorSchema->setOption('filter_extra_fields', true);
   }
@@ -35,6 +44,7 @@ class CarreraFormFilter extends BaseCarreraFormFilter
   {
     $fields = parent::getFields();
     $fields['id'] = 'Number';
+    $fields['estado'] = 'Boolean';
 
     return $fields;
   }

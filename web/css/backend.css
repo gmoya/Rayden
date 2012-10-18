@@ -199,7 +199,7 @@ textarea {
     color: #999999;
     font-size: 15px;
     height: 25px;
-    padding-left: 10px;
+    padding: 0 5px;
 }
 
 input[type='text']:focus,
@@ -210,7 +210,7 @@ select:focus, textarea:focus {
 
 textarea {
 	height: 60px;	
-	padding-left: 0;
+  padding: 0 5px;
 }
 
 textarea.error {
@@ -278,13 +278,6 @@ input[type='submit'] {
 }
 
 /*** PERFIL ***/
-.lateral-izquierdo {
-	float: left;
-}
-
-.lateral-derecho {
-	float: right;
-}
 
 #foto-perfil {
 	float: left;
@@ -301,6 +294,7 @@ input[type='submit'] {
 	display: inline;
 	float: left;
 	margin-bottom: 20px;
+	width: 75%;
 }
 
 #datos-perfil ul {
@@ -308,19 +302,40 @@ input[type='submit'] {
 }
 
 #datos-perfil li {
-	list-style: none;
 	color: #676766;
 	line-height: 22px;
+	list-style: none;
 }
 
-.nombre-perfil {
+#datos-perfil .nombre-perfil {
 	font-size: 30px;
 	font-weight: bold;
-	margin-bottom: 15px;
+	line-height: 32px;
 }
 
-.perfil-lateral {
+.domicilios.pin,
+.clear {
+	clear: both;
+}
+
+.perfil-actions {
+	display: block;
+	padding: 0 0 7px;
+}
+
+.perfil-actions .icon {
+	display: inline-block;
+}
+/*---- FIN PERFIL ----*/
+
+.lateral-izquierdo {
+	float: left;
+	width: 49%;
+}
+
+.lateral-derecho {
 	float: right;
+	width: 49%;
 }
 
 .pin {
@@ -348,18 +363,16 @@ input[type='submit'] {
 
 .pin-content {
 	background-color: #fff;
-	padding: 10px 20px 5px;
+	padding: 0px 20px 5px;
 }
 
-.domicilios.pin,
-.clear {
-	clear: both;
-}
 
 .pin-content .pin-item {
     border-bottom: 1px dotted #CBCBCB;
 		overflow: hidden;
-    padding: 10px;
+    padding: 0;
+		padding-bottom: 7px;
+		padding-top: 7px;
 }
 
 .pin-content .pin-item:first-child {
@@ -373,7 +386,7 @@ input[type='submit'] {
 
 .item-flotante-izq {
 	float: left;
-	width: 330px;
+	width: 92%;
 }
 
 .item-flotante-der {

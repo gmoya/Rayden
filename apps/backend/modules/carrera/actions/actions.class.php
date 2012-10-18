@@ -13,6 +13,11 @@ require_once dirname(__FILE__).'/../lib/carreraGeneratorHelper.class.php';
  */
 class carreraActions extends autoCarreraActions
 {
+  public function executeShow(sfWebRequest $request) 
+  {
+		$this->Carrera = $this->getRoute()->getObject();
+  }
+
   public function executeAutoComplete(sfWebRequest $request)
   {
     $this->getResponse()->setContentType('application/json');
@@ -81,6 +86,19 @@ class carreraActions extends autoCarreraActions
     $this->setTemplate('edit');
   }
 
+ 	public function executeBaja(sfWebRequest $request)
+	{
+		$this->Carrera = CarreraPeer::retrieveByPk($request->getParameter('id'));
+		$this->estados = Carrera::getEstadosBaja();
+
+		if ($params = $request->getPostParameters()) 
+		{
+			$this->Carrera->darBaja($params, $this->getUser());
+    	
+			return $this->renderPartial('carrera/notice', array('Carrera' => $this->Carrera, 'isNew' => false));
+		}
+	}
+
 	public function isAjax()
   {
     return $this->getRequest()->isXmlHttpRequest();
@@ -94,16 +112,10 @@ class carreraActions extends autoCarreraActions
     {
       $notice = $form->getObject()->isNew() ? 'Los datos han sido registrados exitosamente.' : 'Los datos han sido registrados exitosamente.';
 
-#			TODO Se hardcodea el usuario porque aún no está el módulo de Usuarios			
-#			$form->getObject()->setUserCreated($request->getUser()->getId());
 			if ($form->isNew())
-			{
-				$form->getObject()->setUserCreated(1);
-			}
+				$form->getObject()->setCreatedById($this->getUser()->getId());
 			else
-			{
-				$form->getObject()->setUserUpdated(1);
-			}
+				$form->getObject()->setUpdatedById($this->getUser()->getId());
 
       $carrera = $form->save();
 

@@ -19,4 +19,20 @@ class personaActions extends autoPersonaActions
 		
 		return $this->renderPartial('persona/mis_domicilios', array('Persona' => $Persona, 'modulo' => $request->getParameter('modulo')));
 	}
+
+	public function executeActualizarDatosAcademicos(sfWebRequest $request)
+	{
+		$Persona = $this->getRoute()->getObject();
+		
+		return $this->renderPartial('persona/mis_datos_academicos', array('Persona' => $Persona, 'modulo' => $request->getParameter('modulo')));
+	}
+
+	public function executeActualizarEmpleos(sfWebRequest $request)
+	{
+		$Persona = $this->getRoute()->getObject();
+		
+		return $this->renderPartial('persona/mis_empleos', array('Persona' => $Persona, 'modulo' => $request->getParameter('modulo')));
+	}
+
+
 }

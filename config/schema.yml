@@ -22,6 +22,8 @@ propel:
     id:            { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
     nombre:        { type: VARCHAR, size: '100', required: true }
     descripcion:   { type: LONGVARCHAR, required: true }
+    estado:        { type: INTEGER, size: 1, required: true, default: 0 }
+    observaciones: { type: LONGVARCHAR, required: false}
     created_at:    ~
     created_by_id: { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:    ~
@@ -41,8 +43,8 @@ propel:
     titulo_nacionalidad_id: { type: INTEGER, required: true, foreignTable: nacionalidad, foreignReference: id }
     estatal:                { type: BOOLEAN, required: true, default: true }
     visado:                 { type: BOOLEAN, required: false, default: false }
-    fecha_visado:           { type: DATE, required: true }
-    observaciones:          { type: VARCHAR, size: 255, required: false }
+    fecha_visado:           { type: DATE, required: false }
+    observaciones:          { type: LONGVARCHAR, required: false}
     created_at:             ~
     created_by_id:          { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id }
     updated_at:             ~
@@ -112,7 +114,7 @@ propel:
     tipo_empleo_id: { type: INTEGER, required: true, foreignTable: tipo_empleo, foreignReference: id }
     cuit:           { type: INTEGER, size: '11' }
     fecha_inicio:   { type: DATE, required: true }
-    fecha_fin:      { type: DATE, required: true }
+    fecha_fin:      { type: DATE, required: false }
     cargo:          { type: VARCHAR, size: '50', required: false }
     lugar_trabajo:  { type: VARCHAR, size: '100', required: false }
     telefono:       { type: VARCHAR, size: '20', required: false }

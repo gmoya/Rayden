@@ -43,7 +43,6 @@ class AlumnoFormFilter extends BaseAlumnoFormFilter
 
     $this->validatorSchema->setOption('allow_extra_fields', true);
     $this->validatorSchema->setOption('filter_extra_fields', true);
-
   }
 
   public function addLegajoColumnCriteria(Criteria $criteria, $field, $values)

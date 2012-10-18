@@ -14,13 +14,19 @@ class AlumnoForm extends BaseAlumnoForm
 		unset($this['created_at'], $this['created_by_id'], $this['updated_at'], 
 					$this['updated_by_id'], $this['deleted_at'],	$this['deleted_by_id'],
 					$this['regular'], $this['regular_at'], $this['persona_id'], 
-					$this['estado'], $this['legajo']
+					$this['estado'], $this['legajo'], $this['beca']
 				);
 
     $persona_form = new PersonaForm($this->object->getPersona());
 		$persona_form->configurarAlumno();
 
     $this->embedForm('persona', $persona_form);
+
+    $this->widgetSchema['accion'] = new sfWidgetFormInputHidden();
+		$this->validatorSchema['accion'] = new sfValidatorPass(array('required' => false));
+
+		$this->validatorSchema->setOption('allow_extra_fields', true);
+    $this->validatorSchema->setOption('filter_extra_fields', true);
   }
 
 	public function doSave($con = null)

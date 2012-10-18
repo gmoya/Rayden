@@ -26,3 +26,12 @@ all:
       suplente: 0
       interino: 1
       titular: 2
+    Carrera:
+      vigente: 0
+      cambio_de_curricula: 1
+      resolucion_ministerial: 2
+      falta_de_alumnos: 3
+    CarreraBaja:
+      cambio_de_curricula: 1
+      resolucion_ministerial: 2
+      falta_de_alumnos: 3

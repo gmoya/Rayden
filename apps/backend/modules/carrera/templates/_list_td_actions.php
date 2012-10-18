@@ -3,9 +3,11 @@
 		<li class="sf_admin_action_edit">
 			<a class="icon edit colorbox" title="<?php echo __('Edit') ?>" href="<?php echo url_for('carrera/edit?id='.$Carrera->getId()) ?>"> </a>
 		</li>
+		<?php if (!$Carrera->isDadaBaja()) : ?>
 		<li class="sf_admin_action_delete">
-			<a class="icon delete colorbox" title="<?php echo __('Delete') ?>" href="<?php echo url_for('carrera/delete?id='.$Carrera->getId()) ?>"> </a>
+			<a class="icon delete colorbox" title="<?php echo __('Baja') ?>" href="<?php echo url_for('carrera/baja?id='.$Carrera->getId()) ?>"> </a>
 		</li>
+		<?php endif ?>
   </ul>
 </td>
 

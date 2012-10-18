@@ -16,7 +16,7 @@ generator:
       fields:  ~
       list:    
         display: [ id, _nombre, _documento, _carrera, _estado ]
-        max_per_page: 5
+        batch_actions: {}
       filter:
         display: [ nombre, nro_documento, carrera, estado, beca ]
       form:    ~

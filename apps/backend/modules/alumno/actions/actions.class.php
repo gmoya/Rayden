@@ -33,7 +33,7 @@ class alumnoActions extends autoAlumnoActions
 
     if (($this->ajax = $this->isAjax()) && $this->processForm($request, $this->form))
     {
-    	return $this->renderPartial('alumno/notice', array('alumno' => $this->Alumno, 'isNew' => true));
+    	return $this->renderPartial('alumno/notice', array('Alumno' => $this->Alumno, 'isNew' => true));
     }
 
     $this->setTemplate('new');
@@ -43,6 +43,7 @@ class alumnoActions extends autoAlumnoActions
 	{
 	    $this->Alumno = $this->getRoute()->getObject();
    		$this->form = $this->configuration->getForm($this->Alumno);
+    	$this->form->setDefault('accion', $request->getParameter('accion'));
       $this->ajax = $this->isAjax();
 	}
 
@@ -53,7 +54,9 @@ class alumnoActions extends autoAlumnoActions
 
     if (($this->ajax = $this->isAjax()) && $this->processForm($request, $this->form))
     {
-    	return $this->renderPartial('alumno/notice', array('alumno' => $this->Alumno, 'isNew' => false));
+			$params = $request->getPostParameters();
+    	
+			return $this->renderPartial('alumno/notice', array('Alumno' => $this->Alumno, 'isNew' => false, 'accion' => $params['alumno']['accion']));
     }
 
     $this->setTemplate('edit');
@@ -64,10 +67,11 @@ class alumnoActions extends autoAlumnoActions
 		$this->Alumno = AlumnoPeer::retrieveByPk($request->getParameter('id'));
 		$this->estados = Alumno::getEstadosBaja();
 
-		if ($params = $request->getPostParameters()) {
+		if ($params = $request->getPostParameters()) 
+		{
 			$this->Alumno->darBaja($params, $this->getUser());
     	
-			return $this->renderPartial('alumno/notice', array('alumno' => $this->Alumno, 'isNew' => false));
+			return $this->renderPartial('alumno/notice', array('Alumno' => $this->Alumno, 'isNew' => false, 'accion' => $params['alumno']['accion']));
 		}
 	}
 
@@ -88,7 +92,14 @@ class alumnoActions extends autoAlumnoActions
 
     return $this->renderPartial('alumno/list_ajax', array('pager' => $pager, 'sort' => $sort, 'helper' => $helper));
 	}
-
+	
+	public function executeDatosPerfil(sfWebRequest $request)
+	{
+		$Alumno = $this->getRoute()->getObject();
+    
+		return $this->renderPartial('alumno/datos_perfil', array('Alumno' => $Alumno));
+	}
+	
   public function executeAutoComplete(sfWebRequest $request)
   {
     $this->getResponse()->setContentType('application/json');

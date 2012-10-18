@@ -18,4 +18,8 @@
  */
 class TipoEmpleo extends BaseTipoEmpleo {
 
+	public function __toString()
+	{
+		return $this->getDescripcion();
+	}
 } // TipoEmpleo
