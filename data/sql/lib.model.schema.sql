@@ -140,7 +140,8 @@ DROP TABLE IF EXISTS `docente`;
 
 CREATE TABLE `docente`
 (
-	`legajo` INTEGER  NOT NULL,
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`legajo` INTEGER,
 	`estado` INTEGER(1) default 0 NOT NULL,
 	`persona_id` INTEGER  NOT NULL,
 	`created_at` DATETIME,
@@ -149,7 +150,7 @@ CREATE TABLE `docente`
 	`updated_by_id` INTEGER,
 	`deleted_at` DATETIME,
 	`deleted_by_id` INTEGER,
-	PRIMARY KEY (`legajo`),
+	PRIMARY KEY (`id`),
 	INDEX `docente_FI_1` (`persona_id`),
 	CONSTRAINT `docente_FK_1`
 		FOREIGN KEY (`persona_id`)

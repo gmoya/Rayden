@@ -14,7 +14,8 @@ abstract class BaseDocenteForm extends BaseFormPropel
   public function setup()
   {
     $this->setWidgets(array(
-      'legajo'        => new sfWidgetFormInputHidden(),
+      'id'            => new sfWidgetFormInputHidden(),
+      'legajo'        => new sfWidgetFormInputText(),
       'estado'        => new sfWidgetFormInputText(),
       'persona_id'    => new sfWidgetFormPropelChoice(array('model' => 'Persona', 'add_empty' => false)),
       'created_at'    => new sfWidgetFormDateTime(),
@@ -26,7 +27,8 @@ abstract class BaseDocenteForm extends BaseFormPropel
     ));
 
     $this->setValidators(array(
-      'legajo'        => new sfValidatorChoice(array('choices' => array($this->getObject()->getLegajo()), 'empty_value' => $this->getObject()->getLegajo(), 'required' => false)),
+      'id'            => new sfValidatorChoice(array('choices' => array($this->getObject()->getId()), 'empty_value' => $this->getObject()->getId(), 'required' => false)),
+      'legajo'        => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647, 'required' => false)),
       'estado'        => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647)),
       'persona_id'    => new sfValidatorPropelChoice(array('model' => 'Persona', 'column' => 'id')),
       'created_at'    => new sfValidatorDateTime(array('required' => false)),

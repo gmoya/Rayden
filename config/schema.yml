@@ -54,7 +54,8 @@ propel:
   
   docente:
     _attributes:     { phpName: Docente }
-    legajo:          { type: INTEGER, primaryKey: true, autoIncrement: false, required: true }
+    id:              { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    legajo:          { type: INTEGER, required: false }
 #    tipo_docente_id: { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }
     estado:          { type: INTEGER, size: 1, required:true, default: 0 }
     persona_id:      { type: INTEGER, required: true, foreignTable: persona, foreignReference: id }

@@ -14,7 +14,6 @@
 	<li> <?php echo $Docente->getPersona()->getDocumentoCompleto() ?></li>
 	<li> Celular: <?php echo $Docente->getPersona()->getCelular() ?></li>
 	<li> Email: <?php echo $Docente->getPersona()->getEmail() ?></li>
-	<li> <?php echo ($Docente->getBeca()) ? 'Becado' : '' ?></li>
 	<li> Estado: <?php echo $Docente->getNombreEstado() ?></li>
 	<li> Observaciones: <?php echo nl2br($Docente->getPersona()->getObservaciones()) ?></li>
 </ul>

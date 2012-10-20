@@ -26,6 +26,16 @@ all:
       suplente: 0
       interino: 1
       titular: 2
+      expulsado: 3
+      abandono: 4
+      cambio_de_instituto: 5
+      rechazado: 6
+    DocenteBaja:
+      expulsado: 3
+      abandono: 4
+      cambio_de_instituto: 5
+      rechazado: 6
+
     Carrera:
       vigente: 0
       cambio_de_curricula: 1

@@ -24,7 +24,7 @@
 					listaLoc.find('option[value="<?php echo $localidad ?>"]').attr('selected', 'selected');
 <?php endif ?>
 				},
-				url:'/domicilio/elegirPorProvincia?id=' + listaPcia.val() 
+				url:'<?php echo url_for('domicilio/elegirPorProvincia') ?>?id=' + listaPcia.val() 
 			});
 		}
 

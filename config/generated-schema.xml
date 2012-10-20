@@ -90,7 +90,8 @@
   </table>
 
   <table name="docente">
-    <column name="legajo" type="INTEGER" primaryKey="true" autoIncrement="false" required="true" />
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" />
+    <column name="legajo" type="INTEGER" required="false" />
     <column name="estado" type="INTEGER" size="1" required="true" default="0" />
     <column name="persona_id" type="INTEGER" required="true" />
     <foreign-key foreignTable="persona">

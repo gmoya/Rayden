@@ -13,7 +13,7 @@ class AlumnoFormFilter extends BaseAlumnoFormFilter
   {
 		unset($this['persona_id'], $this['created_at'], $this['created_by_id'], 
 					$this['updated_at'], $this['updated_by_id'], $this['deleted_at'], 
-					$this['deleted_by_id'], $this['regular_at']
+					$this['deleted_by_id']
 				);
 
     $contexto = sfContext::getInstance();
@@ -43,11 +43,6 @@ class AlumnoFormFilter extends BaseAlumnoFormFilter
 
     $this->validatorSchema->setOption('allow_extra_fields', true);
     $this->validatorSchema->setOption('filter_extra_fields', true);
-  }
-
-  public function addLegajoColumnCriteria(Criteria $criteria, $field, $values)
-  {
-    $criteria->add(AlumnoPeer::LEGAJO, $values, Criteria::EQUAL);
   }
 
   public function addNombreColumnCriteria(Criteria $criteria, $field, $values)

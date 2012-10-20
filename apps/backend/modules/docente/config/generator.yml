@@ -14,8 +14,11 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
-      filter:  ~
+      list:    
+        display: [ id, _nombre, _documento, _carrera, _estado ]
+        batch_actions: {}
+      filter:  
+        display: [ nombre, nro_documento, carrera, estado ]
       form:    ~
       edit:    ~
       new:     ~

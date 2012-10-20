@@ -16,6 +16,30 @@
  *
  * @package    lib.model
  */
-class DocentePeer extends BaseDocentePeer {
+class DocentePeer extends BaseDocentePeer 
+{
+  static public function retrieveForAutoSelect($q, $limit)
+  {
+    $criteria = new Criteria();
+    $criteria->addJoin(array(DocentePeer::PERSONA_ID,), array(PersonaPeer::ID,));
+
+    $criterion = $criteria->getNewCriterion(PersonaPeer::NOMBRE, '%'.$q.'%', Criteria::LIKE);
+    $criterion->addOr($criteria->getNewCriterion(PersonaPeer::APELLIDO, '%'.$q.'%', Criteria::LIKE));
+
+    $criteria->add($criterion);
+    $criteria->addAscendingOrderByColumn(PersonaPeer::NOMBRE);
+    $criteria->setIgnoreCase(true);
+    $criteria->setLimit(10);
+
+    $docentes = array();
+
+    foreach (DocentePeer::doSelect($criteria) as $docente)
+    {
+      $docentes[$docente->getId()] = (string) $docente;
+    }
+
+    return $docentes;
+	}
+
 
 } // DocentePeer

@@ -40,7 +40,7 @@ docente:
     model:                Docente
     module:               docente
     prefix_path:          /docente
-    column:               legajo
+    column:               id
     with_wildcard_routes: true
 
 alumno:

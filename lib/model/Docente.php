@@ -18,12 +18,71 @@
  */
 class Docente extends BaseDocente {
 
-	# TODO por el momento no hace nada	
-	public function delete(PropelPDO $con = null)
+	public function __toString()
 	{
-		if ($con === null) {
-			$con = Propel::getConnection(DocentePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
-		}
+		return $this->getPersona()->getNombreCompleto();
+	}
+
+  public function getNombreEstado()
+  {
+    $estadosPosibles = sfConfig::get('app_estados_Docente');
+    $nombreEstado = array_keys($estadosPosibles, $this->getEstado());
+
+    return(ucwords($nombreEstado[0]));
+  }
+
+  static public function getIdByNombreEstado($nombre = null, $desc = false)
+  {
+    $estadosPosibles = sfConfig::get('app_estados_Docente');
+
+    if (!is_null($nombre))
+    {
+      return $estadosPosibles[$nombre];
+    }
+
+    if ($desc)
+    {
+      return $nombreEstado = array_keys($estadosPosibles);
+    }
+
+    return $estadosPosibles;
+  }
+
+  static public function getEstadosActivos()
+	{
+    return sfConfig::get('app_estados_DocenteActivo');
+	}
+
+  static public function getEstadosBaja()
+	{
+    return sfConfig::get('app_estados_DocenteBaja');
+	}
+
+  static public function search($arg = null)
+  {
+    if (null === $arg || '' === $arg) { return ''; }
+
+    $docente = DocentePeer::retrieveByPK($arg);
+    
+		return ($docente && (($nombre = $docente->getPersona()->getNombreCompleto()) != '')) ? $nombre : '';
+  }
+
+	public function darBaja($params, $usuario)
+	{
+		$this->setEstado($params['docente']['estado']);
+		$this->setDeletedAt(date('Y-m-d H:i:s'));
+		$this->setDeletedById($usuario->getId());
+
+		$obs = ($previa = $this->getPersona()->getObservaciones()) ? $previa." \r\n". $params['docente']['observaciones'] : $params['docente']['observaciones'];
+		$this->getPersona()->setObservaciones($obs);
+		
+		$this->getPersona()->save();
+		$this->save();
+	}
+
+	public function isDadoBaja()
+	{
+		return in_array($this->getEstado(), sfConfig::get('app_estados_DocenteBaja'));
 	}
 
 } // Docente

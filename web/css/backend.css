@@ -210,7 +210,7 @@ select:focus, textarea:focus {
 
 textarea {
 	height: 60px;	
-  padding: 0 5px;
+  padding: 5px;
 }
 
 textarea.error {
