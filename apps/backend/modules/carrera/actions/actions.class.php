@@ -26,7 +26,7 @@ class carreraActions extends autoCarreraActions
 		return $this->renderText(json_encode($carreras));
   }
 
-	public function executeList(sfWebRequest $request)
+	public function executeListAjax(sfWebRequest $request)
 	{
     if ($request->getParameter('sort') && $this->isValidSortColumn($request->getParameter('sort')))
     {
@@ -60,7 +60,7 @@ class carreraActions extends autoCarreraActions
 
     if (($this->ajax = $this->isAjax()) && $this->processForm($request, $this->form))
     {
-    	return $this->renderPartial('carrera/notice', array());
+    	return $this->renderPartial('carrera/notice', array('Carrera' => $this->Carrera, 'isNew' => true));
     }
 
     $this->setTemplate('new');
@@ -70,6 +70,7 @@ class carreraActions extends autoCarreraActions
   {
     $this->Carrera = $this->getRoute()->getObject();
     $this->form = $this->configuration->getForm($this->Carrera);
+    $this->form->setDefault('accion', $request->getParameter('accion'));
     $this->ajax = $this->isAjax();
   }
 
@@ -80,7 +81,9 @@ class carreraActions extends autoCarreraActions
 
     if (($this->ajax = $this->isAjax()) && $this->processForm($request, $this->form))
     {
-    	return $this->renderPartial('carrera/notice', array());
+			$params = $request->getPostParameters();
+
+    	return $this->renderPartial('carrera/notice', array('Carrera' => $this->Carrera, 'isNew' => false, 'accion' => $params['carrera']['accion']));
     }
 
     $this->setTemplate('edit');
@@ -88,17 +91,27 @@ class carreraActions extends autoCarreraActions
 
  	public function executeBaja(sfWebRequest $request)
 	{
-		$this->Carrera = CarreraPeer::retrieveByPk($request->getParameter('id'));
-		$this->estados = Carrera::getEstadosBaja();
-
 		if ($params = $request->getPostParameters()) 
 		{
-			$this->Carrera->darBaja($params, $this->getUser());
+			$Carrera = CarreraPeer::retrieveByPk($request->getParameter('idd'));
+			$Carrera->darBaja($params, $this->getUser());
     	
-			return $this->renderPartial('carrera/notice', array('Carrera' => $this->Carrera, 'isNew' => false));
+			return $this->renderPartial('carrera/notice', array('Carrera' => $Carrera, 'isNew' => false, 'accion' => $params['carrera']['accion']));
+
+		} else {
+			$this->Carrera = CarreraPeer::retrieveByPk($request->getParameter('id'));
+			$this->accion = $request->getParameter('accion');
+			$this->estados = Carrera::getEstadosBaja();
 		}
 	}
 
+	public function executeDatosPerfil(sfWebRequest $request)
+	{
+		$Carrera = $this->getRoute()->getObject();
+    
+		return $this->renderPartial('carrera/datos_perfil', array('Carrera' => $Carrera));
+	}
+	
 	public function isAjax()
   {
     return $this->getRequest()->isXmlHttpRequest();

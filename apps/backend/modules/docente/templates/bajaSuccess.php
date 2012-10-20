@@ -1,23 +1,23 @@
 <?php use_helper('I18N', 'Date') ?>
-<?php include_partial('alumno/assets') ?>
+<?php include_partial('docente/assets') ?>
 <?php use_helper('jQuery') ?>
 
 <script type="text/javascript">
 
 jQuery(document).ready(function() {
 
-	var validator = jQuery("#form-baja-alumno").validate({
+	var validator = jQuery("#form-baja-docente").validate({
 			rules: {
-				'alumno[estado]': {
+				'docente[estado]': {
 						required:true,
 				},
-				'alumno[observaciones]': {
+				'docente[observaciones]': {
 						required:true,
 				}
 			},
       messages: {
-				'alumno[estado]': 'Ingrese el estado',
-				'alumno[observaciones]': 'Ingrese una observación'
+				'docente[estado]': 'Ingrese el estado',
+				'docente[observaciones]': 'Ingrese una observación'
 			},
 			errorPlacement: function(error, element) {
 					error.insertAfter(element);
@@ -25,17 +25,17 @@ jQuery(document).ready(function() {
 			},
 			errorElement: "p",
 			submitHandler: function(form) {
-					sendingForm("#sf_admin_container.alumno-form");
+					sendingForm("#sf_admin_container.docente-form");
 					jQuery(form).find('input[type=submit]').attr('disabled', 'disabled');
 					jQuery.ajax({
 						type:'POST',
 						dataType:'html',
 						data:jQuery(form).serialize(),
 						success:function(data, textStatus){
-								jQuery('#sf_admin_container.baja-alumno-form').html(data);
+								jQuery('#sf_admin_container.baja-docente-form').html(data);
 								jQuery.colorbox.resize();
 						},
-						url:'<?php echo url_for('alumno/baja?idd='.$Alumno->getId()) ?>'
+						url:'<?php echo url_for('docente/baja?idd='.$Docente->getId()) ?>'
 					}); 
 					
 					return false;
@@ -45,22 +45,22 @@ jQuery(document).ready(function() {
 
 </script>
 
-<div id="sf_admin_container" class="baja-alumno-form alumno-form form">
-  <h1>Baja de <?php echo $Alumno ?> </h1>
+<div id="sf_admin_container" class="baja-docente-form docente-form form">
+  <h1>Baja de <?php echo $Docente ?> </h1>
 
   <div id="sf_admin_header"> </div>
 
   <div id="sf_admin_content">
-		<div id="form-alumno" class="form">
-			<form id="form-baja-alumno" method="POST" action="<?php echo url_for('alumno/baja?id='.$Alumno->getId()) ?>">
-				<input type="hidden" id="alumno_accion" value="<?php echo $accion ?>" name="alumno[accion]">
+		<div id="form-docente" class="form">
+			<form id="form-baja-docente" method="POST" action="<?php echo url_for('docente/baja?id='.$Docente->getId()) ?>">
+				<input type="hidden" id="docente_accion" value="<?php echo $accion ?>" name="docente[accion]">
 				<table>
 					<tr>
-						<td><label for="alumno_persona_nombre">Estado</label> </td>
+						<td><label for="docente_persona_nombre">Estado</label> </td>
 						<td  class="campos">
 						  <div class="<?php #echo $class['persona']['nombre'] ?><?php # $form['persona']['nombre']->hasError() and print ' errors' ?>">
 						    <div>
-									<select id="alumno_estado" name="alumno[estado]">
+									<select id="docente_estado" name="docente[estado]">
 										<option selected="selected" value=""></option>
 										<?php foreach ($estados as $clave => $valor) :?>
 										<option value="<?php echo $valor ?>"><?php echo $clave ?></option>
@@ -72,11 +72,11 @@ jQuery(document).ready(function() {
 					</tr>
 				
 					<tr>
-						<td><label for="alumno_observaciones">Observaciones</label> </td>
+						<td><label for="docente_observaciones">Observaciones</label> </td>
 						<td  class="campos">
 						  <div class="<?php #echo $class['persona']['nombre'] ?><?php # $form['persona']['nombre']->hasError() and print ' errors' ?>">
 						    <div>
-									<textarea id="alumno_observaciones" name="alumno[observaciones]"> </textarea>
+									<textarea id="docente_observaciones" name="docente[observaciones]"> </textarea>
 						    </div>
 						  </div>
 						</td>

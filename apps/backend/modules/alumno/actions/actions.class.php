@@ -64,14 +64,17 @@ class alumnoActions extends autoAlumnoActions
 
  	public function executeBaja(sfWebRequest $request)
 	{
-		$this->Alumno = AlumnoPeer::retrieveByPk($request->getParameter('id'));
-		$this->estados = Alumno::getEstadosBaja();
-
 		if ($params = $request->getPostParameters()) 
 		{
-			$this->Alumno->darBaja($params, $this->getUser());
+			$Alumno = AlumnoPeer::retrieveByPk($request->getParameter('idd'));
+			$Alumno->darBaja($params, $this->getUser());
     	
-			return $this->renderPartial('alumno/notice', array('Alumno' => $this->Alumno, 'isNew' => false, 'accion' => $params['alumno']['accion']));
+			return $this->renderPartial('alumno/notice', array('Alumno' => $Alumno, 'isNew' => false, 'accion' => $params['alumno']['accion']));
+
+		} else {
+			$this->Alumno = AlumnoPeer::retrieveByPk($request->getParameter('id'));
+			$this->accion = $request->getParameter('accion');
+			$this->estados = Alumno::getEstadosBaja();
 		}
 	}
 

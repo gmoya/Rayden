@@ -70,7 +70,7 @@ class Carrera extends BaseCarrera
 	public function darBaja($params, $usuario)
 	{
 		$this->setEstado($params['carrera']['estado']);
-		$this->setObservaciones($this->getObservaciones().'\r\n'.$params['carrera']['observaciones']);
+		$this->setObservaciones($this->getObservaciones()."\r\n".$params['carrera']['observaciones']);
 		$this->setDeletedAt(date('Y-m-d H:i:s'));
 		$this->setDeletedById($usuario->getId());
 		

@@ -2,7 +2,7 @@
 	<h2>
 		Datos Laborales
 		<span class="sf_admin_action_new">
-			<a class="colorbox icon new" href="<?php echo url_for('/datoslaborales/new?modulo='.$modulo.'&persona='.$Persona->getId()) ?>" title="Nuevo"> </a>
+			<a class="colorbox icon new" href="<?php echo url_for('datoslaborales/new?modulo='.$modulo.'&persona='.$Persona->getId()) ?>" title="Nuevo"> </a>
 		</span>
 	</h2>	
 </div>

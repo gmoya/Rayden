@@ -2,10 +2,11 @@
 	<h2>
 		Datos Académicos
 		<span class="sf_admin_action_new">
-			<a class="colorbox icon new" href="<?php echo url_for('/datosacademicos/new?modulo='.$modulo.'&persona='.$Persona->getId()) ?>" title="Nuevo"> </a>
+			<a class="colorbox icon new" href="<?php echo url_for('datosacademicos/new?modulo='.$modulo.'&persona='.$Persona->getId()) ?>" title="Nuevo"> </a>
 		</span>
 	</h2>	
 </div>
+
 <div class="pin-content">
 	<?php if (count($datos = $Persona->getDatoAcademicos())) : ?>
 		<?php foreach ($datos as $dato) : ?>

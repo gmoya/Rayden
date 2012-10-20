@@ -11,27 +11,15 @@ class CarreraForm extends BaseCarreraForm
 {
   public function configure()
   {
-		unset($this['created_at'], $this['created_by_id'], $this['updated_at'], 
+		unset($this['created_at'], $this['created_by_id'], $this['updated_at'], $this['estado'],
 					$this['updated_by_id'], $this['deleted_at'],	$this['deleted_by_id']
 				);
+
+    $this->widgetSchema['accion'] = new sfWidgetFormInputHidden();
+		$this->validatorSchema['accion'] = new sfValidatorPass(array('required' => false));
+
+		$this->validatorSchema->setOption('allow_extra_fields', true);
+    $this->validatorSchema->setOption('filter_extra_fields', true);
   }
 
-  public function doSave($con = null)
-  {
-    if (is_null($con))
-    {
-      $con = $this->getConnection();
-    }
-
-    $this->updateObject();
-
-    if($this->isNew())
-    {
-      $this->getObject()->setUserCreated(1);
-    }
-
-    $this->object->save($con);
-
-    return $this->object;
-  }
 }

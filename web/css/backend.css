@@ -27,7 +27,6 @@ html, body {
     height: 80px;
     line-height: 80px;
     min-width: 55px;
-    padding: 0 15px;
     position: relative;
     text-align: center;
     vertical-align: middle;
@@ -37,6 +36,7 @@ html, body {
 	color: #666666;
 	text-decoration: none;
 	display: block;
+	padding: 0 15px;
 }
 
 #menu ul li:hover {

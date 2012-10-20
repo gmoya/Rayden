@@ -4,7 +4,7 @@
 <div id="sf_admin_container">
   <h1 class="title-list">
 		<?php echo __('Alumno List', array(), 'messages') ?>
-		<span class="sf_admin_action_new"><a class="colorbox icon new" href="<?php echo url_for('/alumno/new') ?>" title="Nuevo"> </a></span>
+		<span class="sf_admin_action_new"><a class="colorbox icon new" href="<?php echo url_for('alumno/new') ?>" title="Nuevo"> </a></span>
 	</h1>
 
 	<ul class="title-actions sf_admin_actions">
