@@ -15,7 +15,7 @@ generator:
       actions: ~
       fields:  ~
       list:
-        display: [ id, _nombre, _estado, _creada, _creada_por ]
+        display: [ _id, _nombre, _estado, _creada, _creada_por ]
         batch_actions: {}
       filter:
         display: [ id, estado ]

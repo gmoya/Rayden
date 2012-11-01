@@ -13,7 +13,7 @@ class DocenteForm extends BaseDocenteForm
   {
 		unset($this['created_at'], $this['created_by_id'], $this['updated_at'], 
 					$this['updated_by_id'], $this['deleted_at'],	$this['deleted_by_id'],
-					$this['persona_id'], $this['legajo']
+					$this['persona_id'], $this['legajo'], $this['estado']
 				);
 
     $persona_form = new PersonaForm($this->object->getPersona());

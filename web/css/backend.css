@@ -11,6 +11,62 @@ html, body {
 	height: 80px;
 }
 
+#footer {
+  background: none repeat scroll 0 0 #1A1A1A;
+  border-top: 1px solid #FFFFFF;
+	color: #5B5B5B;
+	font-family: 'ProximaNovaSoft',sans-serif;
+	font-size: 11px;
+  line-height: 27px;
+  margin-top: 65px;
+  padding-top: 45px;
+}
+
+#footer .footer-container {
+  margin: 0 auto;
+	padding: 0 20px;
+	width: 990px;
+}
+
+#footer .documentacion {
+	float: left;
+  margin-right: 20px;
+	margin-bottom: 30px;
+  width: 320px;
+}
+
+#footer .footer-titulo {
+  color: #fff;
+	font-weight:bold;
+  line-height: 25px;
+  margin-top: 0;
+	margin-bottom: 10px;
+}
+
+#footer ul {
+	margin: 0;
+}
+
+#footer ul li {
+	list-style: none;
+}
+
+#footer li a{
+	color: #5B5B5B;
+	text-decoration: none;
+}
+
+#footer li a:hover {
+  color: #0096AF;
+  text-decoration: none;
+}
+
+#footer .datos-instituto {
+	clear: both;
+	padding: 10px 0;
+	text-align: center;
+}
+
 .menu-container {
 	margin: 0 auto;
 	padding-left: 170px;
@@ -93,7 +149,7 @@ html, body {
 	background-color: #474747;
 	font-family: "Helvetica Neue",Arial,sans-serif;
 	font-size: 13px;
-	padding: 11px 22px 12px;
+	padding: 8px 22px;
 	width: 104px;
 }
 

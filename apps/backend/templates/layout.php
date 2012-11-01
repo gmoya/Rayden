@@ -26,9 +26,14 @@
       	<?php if ($sf_user->isAuthenticated()): ?>
             <?php include_partial('global/header') ?>
 				<?php endif ?>
+
 				<div id="content">
 			    <?php echo $sf_content ?>
 				</div>
+
+      	<?php if ($sf_user->isAuthenticated()): ?>
+            <?php include_partial('global/footer') ?>
+				<?php endif ?>
 			</div>
   </body>
 </html>

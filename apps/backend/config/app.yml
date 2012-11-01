@@ -9,39 +9,43 @@ all:
 #    profile_field_name: usuario_id
   estados:
     Alumno:
-      preinscripto: 0
-      inscripto: 1
-      expulsado: 2
-      abandono: 3
-      cambio_de_instituto: 4
-      rechazado: 5
-      egresado: 6
+      Preinscripto: 0
+      Inscripto: 1
+      Expulsado: 2
+      Abandono: 3
+      "Cambio de instituto": 4
+      Rechazado: 5
+      Egresado: 6
     AlumnoBaja:
-      expulsado: 2
-      abandono: 3
-      cambio_de_instituto: 4
-      rechazado: 5
-      egresado: 6
+      Expulsado: 2
+      Abandono: 3
+      "Cambio de instituto": 4
+      Rechazado: 5
+      Egresado: 6
     Docente:
-      suplente: 0
-      interino: 1
-      titular: 2
-      expulsado: 3
-      abandono: 4
-      cambio_de_instituto: 5
-      rechazado: 6
+      Activo: 0
+      "Con Licencia": 1
+      "Cargo de mayor jerarquía": 2
+      Renuncia: 3
+      "Cesantía": 4
+      Disponibilidad: 5
+      "Jubilación": 6
+      "Tareas pasivas": 7
     DocenteBaja:
-      expulsado: 3
-      abandono: 4
-      cambio_de_instituto: 5
-      rechazado: 6
+      "Con Licencia": 1
+      "Cargo de mayor jerarquía": 2
+      Renuncia: 3
+      "Cesantía": 4
+      Disponibilidad: 5
+      "Jubilación": 6
+      "Tareas pasivas": 7
 
     Carrera:
-      vigente: 0
-      cambio_de_curricula: 1
-      resolucion_ministerial: 2
-      falta_de_alumnos: 3
+      Vigente: 0
+      "Cambio de currícula": 1
+      "Resolución Ministerial": 2
+      "Falta de alumnos": 3
     CarreraBaja:
-      cambio_de_curricula: 1
-      resolucion_ministerial: 2
-      falta_de_alumnos: 3
+      "Cambio de currícula": 1
+      "Resolución Ministerial": 2
+      "Falta de alumnos": 3
